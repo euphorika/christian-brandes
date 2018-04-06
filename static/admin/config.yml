@@ -2,6 +2,7 @@ backend:
   name: git-gateway
 
 media_folder: static/assets
+publish_mode: editorial_workflow
 
 collections:
   - name: blog
@@ -10,12 +11,13 @@ collections:
     create: true
     fields:
       - { name: path, label: Path }
+      - { name: title, label: Title }
       - { name: date, label: Date, widget: date }
       - { label: "Featured Image", name: "thumbnail", widget: "image" }
       - label: "Gallery"
         name: "galleryImages"
         widget: "list"
+        required: false
         fields:
           - {label: Image, name: image, widget: image}
-      - { name: title, label: Title }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
