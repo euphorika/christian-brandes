@@ -17,7 +17,6 @@ collections:
       - label: "Gallery"
         name: "galleryImages"
         widget: "list"
-        required: false
         fields:
           - {label: Image, name: image, widget: image}
       - { label: "Body", name: "body", widget: "markdown", required: false }
