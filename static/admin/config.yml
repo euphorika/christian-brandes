@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  accept_roles: #optional - accepts all users if left out
+    - admin
+    - editor
+
+media_folder: static/assets
+
+collections:
+  - name: blog
+    label: Blog
+    folder: blog
+    create: true
+    fields:
+      - { name: path, label: Path }
+      - { name: date, label: Date, widget: date }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - label: "Gallery"
+        name: "galleryImages"
+        widget: "list"
+        fields:
+          - {label: Image, name: image, widget: image}
+      - { name: title, label: Title }
+      - { label: "Body", name: "body", widget: "markdown" }
