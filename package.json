@@ -10,7 +10,9 @@
   "dependencies": {
     "gatsby": "^1.9.241",
     "gatsby-link": "^1.6.39",
+    "gatsby-plugin-google-fonts": "0.0.4",
     "gatsby-plugin-netlify-cms": "^1.0.12",
+    "gatsby-plugin-sass": "^1.0.25",
     "gatsby-source-filesystem": "^1.5.28",
     "gatsby-transformer-remark": "^1.7.39"
   }

@@ -1,7 +1,14 @@
 module.exports = {
   plugins: [
-    'gatsby-plugin-netlify-cms',
+    `gatsby-plugin-sass`,
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Montserrat\:300,900`
+        ]
+      }
+    }, {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/blog`,
@@ -9,5 +16,6 @@ module.exports = {
       },
     },
     'gatsby-transformer-remark',
+    'gatsby-plugin-netlify-cms',
   ]
 };
