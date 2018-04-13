@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    `gatsby-plugin-stylus`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -16,5 +16,6 @@ module.exports = {
       },
     },
     'gatsby-transformer-remark',
+    'gatsby-plugin-netlify-cms',
   ]
 };
