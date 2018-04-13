@@ -1,6 +1,5 @@
 module.exports = {
   plugins: [
-    'gatsby-plugin-netlify-cms',
     `gatsby-plugin-stylus`,
     {
       resolve: `gatsby-plugin-google-fonts`,
