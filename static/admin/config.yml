@@ -6,9 +6,32 @@ public_folder: /assets
 publish_mode: editorial_workflow
 
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
+  - name: homepage
+    label: Homepage
+    folder: home
+    create: true
+    fields:
+      - name: sticky
+        label: Sticky
+        widget: relation
+        collection: posts
+        searchFields: ["name", "title"]
+        valueField: name
+      - name: teasers
+        label: Teaser
+        widget: list
+        required: false,
+        fields:
+          - { name: verticalPosition, label "Vertical Position"  }
+          - name: teaser
+            label: Teaser
+            widget: relation
+            collection: posts
+            searchFields: ["name", "title"]
+            valueField: name
+  - name: posts
+    label: Post
+    folder: post
     create: true
     fields:
       - { name: path, label: Path }
@@ -21,7 +44,7 @@ collections:
         widget: "list"
         required: false
         fields:
-          - { label: "Vertical Position", name: rowMargin, widget: string }
+          - { label: "Vertical Position", name: rowMargin }
           - label: "Row Images"
             name: rowImages
             widget: list
@@ -29,5 +52,5 @@ collections:
             fields:
               - { label: Image, name: image, widget: image }
               - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100 }
-              - { label: "Vertical Position", widget: string }
+              - { label: "Vertical Position" }
       - { label: "Body", name: "body", widget: "markdown", required: false }
