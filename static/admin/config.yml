@@ -17,18 +17,25 @@ collections:
         collection: posts
         searchFields: ["name", "title"]
         valueField: name
-      - name: teasers
-        label: Teaser
+      - name: row
+        label: Row
         widget: list
-        required: false,
+        required: false
         fields:
-          - { name: verticalPosition, label "Vertical Position"  }
-          - name: teaser
+          - { name: verticalPosition, label: "Vertical Position" }
+          - name: teasers
             label: Teaser
-            widget: relation
-            collection: posts
-            searchFields: ["name", "title"]
-            valueField: name
+            widget: list
+            required: false,
+            fields:
+              - { label: "Vertical Position", name: verticalPosition }
+              - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100 }
+              - name: teaser
+                label: Teaser
+                widget: relation
+                collection: posts
+                searchFields: ["name", "title"]
+                valueField: name
   - name: posts
     label: Post
     folder: post
@@ -51,7 +58,7 @@ collections:
             widget: list
             required: false
             fields:
-              - { label: Image, name: image, widget: image }
+              - { label: "Vertical Position", name: vertcialPosition }
               - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100 }
-              - { label: "Vertical Position" }
+              - { label: Image, name: image, widget: image }
       - { label: "Body", name: "body", widget: "markdown", required: false }
