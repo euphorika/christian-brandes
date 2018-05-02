@@ -43,7 +43,7 @@ collections:
     fields:
       - { name: path, label: Path }
       - { name: title, label: Title }
-      - { name location, label: Location, required: false }
+      - { name: location, label: Location, required: false }
       - { name: date, label: Date, widget: date }
       - { name: meta_description, label: Meta Description, widget: "text", required: false }
       - { name: "thumbnail", label: "Featured Image", widget: "image" }
@@ -52,7 +52,7 @@ collections:
         widget: "list"
         required: false
         fields:
-          - { label: "Vertical Position", name: rowMargin }
+          - { label: "Vertical Position", name: vertcialPosition }
           - label: "Row Images"
             name: rowImages
             widget: list
