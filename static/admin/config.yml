@@ -38,7 +38,7 @@ collections:
                 valueField: name
   - name: posts
     label: Post
-    folder: post
+    folder: posts
     create: true
     fields:
       - { name: path, label: Path }
