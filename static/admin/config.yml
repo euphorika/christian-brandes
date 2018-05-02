@@ -36,6 +36,7 @@ collections:
     fields:
       - { name: path, label: Path }
       - { name: title, label: Title }
+      - { name location, label: Location, required: false }
       - { name: date, label: Date, widget: date }
       - { name: meta_description, label: Meta Description, widget: "text", required: false }
       - { name: "thumbnail", label: "Featured Image", widget: "image" }
