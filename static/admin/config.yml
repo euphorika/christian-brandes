@@ -15,20 +15,19 @@ collections:
       - { name: title, label: Title }
       - { name: date, label: Date, widget: date }
       - { name: meta_description, label: Meta Description, widget: "text", required: false }
-      - label: "Layout"
-        name: "layout"
-        widget: "select"
-        required: false
-        options:
-          - { label: "Fullsize", value: "fullsize" }
-          - { label: "Half, Half", value: "onetwo_onetwo" }
-          - { label: "Two Three, One Three", value: "twothree_onethree" }
-          - { label: "One Three, Two Three", value: "onethree_twothree" }
       - { name: "thumbnail", label: "Featured Image", widget: "image" }
-      - label: "Gallery"
-        name: "galleryImages"
+      - label: "Row"
+        name: "row"
         widget: "list"
         required: false
         fields:
-          - {label: Image, name: image, widget: image}
+          - { label: "Vertical Position", name: rowMargin, widget: string }
+          - label: "Row Images"
+            name: rowImages
+            widget: list
+            required: false
+            fields:
+              - { label: Image, name: image, widget: image }
+              - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100 }
+              - { label: "Vertical Position", widget: string }
       - { label: "Body", name: "body", widget: "markdown", required: false }
