@@ -8,7 +8,13 @@ module.exports = {
           `Montserrat\:300,900`
         ]
       }
-    }, {
+    },{
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/category`,
+        name: "category",
+      },
+    },{
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/posts`,

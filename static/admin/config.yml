@@ -6,9 +6,9 @@ public_folder: /assets
 publish_mode: editorial_workflow
 
 collections:
-  - name: homepage
-    label: Homepage
-    folder: home
+  - name: category
+    label: Category (Homepage)
+    folder: category
     create: true
     fields:
       - { name: path, label: Path }
@@ -39,7 +39,7 @@ collections:
                 searchFields: ["path", "title"]
                 valueField: path
                 displayFields: ["title"]
-                
+
   - name: posts
     label: Posts
     folder: posts
