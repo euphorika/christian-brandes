@@ -16,8 +16,9 @@ collections:
         label: Sticky
         widget: relation
         collection: posts
-        searchFields: ["name", "title"]
-        valueField: name
+        searchFields: ["path", "title"]
+        valueField: path
+        displayFields: ["title"]
       - name: row
         label: Row
         widget: list
@@ -35,8 +36,9 @@ collections:
                 label: Teaser
                 widget: relation
                 collection: posts
-                searchFields: ["name", "title"]
-                valueField: name
+                searchFields: ["path", "title"]
+                valueField: path
+                displayFields: ["title"]
   - name: posts
     label: Posts
     folder: posts
