@@ -11,6 +11,7 @@ collections:
     folder: home
     create: true
     fields:
+      - { name: path, label: Path }
       - name: sticky
         label: Sticky
         widget: relation
@@ -37,7 +38,7 @@ collections:
                 searchFields: ["name", "title"]
                 valueField: name
   - name: posts
-    label: Post
+    label: Posts
     folder: posts
     create: true
     fields:
