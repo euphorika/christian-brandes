@@ -19,26 +19,7 @@ collections:
         searchFields: ["path", "title"]
         valueField: path
         displayFields: ["title"]
-      - name: row
-        label: Row
-        widget: list
-        required: false
-        fields:
-          - { name: verticalPosition, label: "Vertical Position" }
-          - name: teasers
-            label: Teaser
-            widget: list
-            required: false,
-            fields:
-              - { label: "Vertical Position", name: verticalPosition }
-              - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100 }
-              - name: teaser
-                label: Teaser
-                widget: relation
-                collection: posts
-                searchFields: ["path", "title"]
-                valueField: path
-                displayFields: ["title"]
+
   - name: posts
     label: Posts
     folder: posts
