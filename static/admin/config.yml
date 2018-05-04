@@ -7,7 +7,7 @@ publish_mode: editorial_workflow
 
 collections:
   - name: category
-    label: Category (Homepage)
+    label: Category
     folder: category
     create: true
     fields:
