@@ -7,11 +7,14 @@ publish_mode: editorial_workflow
 
 collections:
   - name: category
-    label: Category (Homepage)
+    label: Category
     folder: category
     create: true
     fields:
-      - { name: path, label: Path }
+      - { name: title, label: Title }
+      - label: "Root"
+        name: "root"
+        widget: "boolean"
       - name: sticky
         label: Sticky
         widget: relation
@@ -45,12 +48,12 @@ collections:
     folder: posts
     create: true
     fields:
-      - { name: path, label: Path }
       - { name: title, label: Title }
       - { name: location, label: Location, required: false }
       - { name: date, label: Date, widget: date }
       - { name: meta_description, label: Meta Description, widget: "text", required: false }
       - { name: "thumbnail", label: "Featured Image", widget: "image" }
+      - {label: "Root", name: "root", widget: "hidden", default: false}
       - label: "Row"
         name: "row"
         widget: "list"
