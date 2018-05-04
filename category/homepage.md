@@ -1,6 +1,6 @@
 ---
-title: home
-type: category
+title: homepage
 root: true
-sticky: /case-1
+sticky: /photo-case2
 ---
+
