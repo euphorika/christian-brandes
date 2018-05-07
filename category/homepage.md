@@ -1,6 +1,9 @@
 ---
-title: home
-type: category
+title: homepage
 root: true
-sticky: /case-1
+sticky: Photo Case 1
+row:
+  - teasers:
+      - teaser: Photo Case 2
 ---
+
