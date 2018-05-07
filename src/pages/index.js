@@ -101,6 +101,8 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        sticky
+        root
       }
     }
   }

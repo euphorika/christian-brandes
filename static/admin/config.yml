@@ -19,8 +19,8 @@ collections:
         label: Sticky
         widget: relation
         collection: posts
-        searchFields: ["path", "title"]
-        valueField: path
+        searchFields: ["title"]
+        valueField: title
         displayFields: ["title"]
       - name: row
         label: Row
