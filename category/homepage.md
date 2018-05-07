@@ -1,6 +1,9 @@
 ---
 title: homepage
 root: true
-sticky: /photo-case2
+sticky: Photo Case 1
+row:
+  - teasers:
+      - teaser: Photo Case 2
 ---
 
