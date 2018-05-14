@@ -11,14 +11,14 @@ module.exports = {
     },{
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/category`,
-        name: "category",
+        path: `${__dirname}/posts`,
+        name: "posts",
       },
     },{
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/posts`,
-        name: "posts",
+        path: `${__dirname}/category`,
+        name: "category",
       },
     },
     'gatsby-transformer-remark',

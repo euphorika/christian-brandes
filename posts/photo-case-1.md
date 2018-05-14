@@ -4,6 +4,7 @@ date: '2017-05-03'
 meta_description: Photo Case 1
 thumbnail: /assets/_dsf4368.jpg
 root: false
+category: false
 row:
   - rowImages:
       - image: /assets/_dsf4413.jpg

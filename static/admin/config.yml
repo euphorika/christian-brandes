@@ -15,6 +15,7 @@ collections:
       - label: "Root"
         name: "root"
         widget: "boolean"
+      - {label: "Category", name: "category", widget: "hidden", default: false}
       - name: sticky
         label: Sticky
         widget: relation
@@ -54,6 +55,7 @@ collections:
       - { name: meta_description, label: Meta Description, widget: "text", required: false }
       - { name: "thumbnail", label: "Featured Image", widget: "image" }
       - {label: "Root", name: "root", widget: "hidden", default: false}
+      - {label: "Category", name: "category", widget: "hidden", default: false}
       - label: "Row"
         name: "row"
         widget: "list"

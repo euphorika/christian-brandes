@@ -14,6 +14,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           node {
             frontmatter {
               root
+              category
+              title
             }
             fields {
               slug
@@ -43,7 +45,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   });
 };
 
-exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
+exports.onCreateNode = ({ node, getNode, getNodes, boundActionCreators }) => {
   if (node.internal.type === `MarkdownRemark`) {
     const { createNodeField } = boundActionCreators
     const slug = node.frontmatter.root ? '/' : createFilePath({ node, getNode, basePath: `pages` })
@@ -53,5 +55,32 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
       name: `slug`,
       value: slug
     })
+
+    if (node.frontmatter.root) {
+      const sticky = getNodes().filter(node2 => node2.internal.type === 'MarkdownRemark' && node2.frontmatter.title === node.frontmatter.sticky)
+
+      let teasers = []
+
+      createNodeField({
+        node,
+        name: `stickyMapped`,
+        value: sticky[0].frontmatter
+      })
+
+      node.frontmatter.row[0].teasers.forEach(teaserTitle => {
+        const teaser = getNodes().filter(node2 => node2.internal.type === 'MarkdownRemark' && node2.frontmatter.title === teaserTitle.teaser)
+
+        teasers.push(teaser[0].frontmatter)
+      })
+
+      createNodeField({
+        node,
+        name: `teasersMapped`,
+        value: teasers
+      })
+
+    }
+
   }
+
 };
