@@ -8,7 +8,6 @@ row:
       - teaser: Basketball
   - teasers:
       - teaser: Guitar
-      - {}
       - teaser: Roadtrippin California
 ---
 
