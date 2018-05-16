@@ -1,4 +1,5 @@
 const path = require("path");
+const crypto = require("crypto")
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
@@ -47,7 +48,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
 exports.onCreateNode = ({ node, getNode, getNodes, boundActionCreators }) => {
   if (node.internal.type === `MarkdownRemark`) {
-    const { createNodeField } = boundActionCreators
+    const { createNodeField, createNode } = boundActionCreators
     const slug = node.frontmatter.root ? '/' : createFilePath({ node, getNode, basePath: `pages` })
 
     createNodeField({
@@ -58,14 +59,7 @@ exports.onCreateNode = ({ node, getNode, getNodes, boundActionCreators }) => {
 
     if (node.frontmatter.root) {
       const sticky = getNodes().filter(node2 => node2.internal.type === 'MarkdownRemark' && node2.frontmatter.title === node.frontmatter.sticky)
-
       let teasers = []
-
-      createNodeField({
-        node,
-        name: `stickyMapped`,
-        value: sticky[0].frontmatter
-      })
 
       node.frontmatter.row[0].teasers.forEach(teaserTitle => {
         const teaser = getNodes().filter(node2 => node2.internal.type === 'MarkdownRemark' && node2.frontmatter.title === teaserTitle.teaser)
@@ -73,14 +67,26 @@ exports.onCreateNode = ({ node, getNode, getNodes, boundActionCreators }) => {
         teasers.push(teaser[0].frontmatter)
       })
 
-      createNodeField({
-        node,
-        name: `teasersMapped`,
-        value: teasers
+      const fieldData = {
+        sticky: sticky[0].frontmatter,
+        teasers: teasers,
+      }
+
+      createNode({
+        ...fieldData,
+        id: 'relatedposts',
+        parent: sticky[0].id,
+        children: [],
+        internal: {
+          type: 'cmsGeneratedPosts',
+          contentDigest: crypto.createHash(`md5`).update(JSON.stringify(fieldData)).digest(`hex`),
+          content: JSON.stringify(fieldData),
+          description: `Generetad posts from Netlify CMS relation fields`
+        }
       })
 
     }
 
   }
 
-};
+}

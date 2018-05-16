@@ -8,6 +8,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "gatsby": "^1.9.250",
     "gatsby-link": "^1.6.39",
     "gatsby-plugin-google-fonts": "0.0.4",

@@ -1,17 +1,28 @@
 import React from "react"
 import Sticky from "../components/sticky"
+import Teaser from "../components/teaser"
 import styles from "./index.module.scss"
 
 class Index extends React.Component {
 
+  renderPosts(teasers) {
+    return (
+      <div className={styles.row}>
+        {teasers.map(teaser => {
+          <Sticky teaser={teaser} />
+        })}
+      </div>
+    )
+  }
+
   render() {
-    const { markdownRemark } = this.props.data
-    const { frontmatter, fields } = markdownRemark
+    const { cmsGeneratedPosts } = this.props.data
+    const { sticky, teasers } = cmsGeneratedPosts
 
     return (
       <div>
         <div className={styles.posts + ' ' + styles.sticky}>
-          <Sticky teaser={fields.stickyMapped} />
+          <Sticky teaser={sticky} />
         </div>
         <div className={styles.posts}>
           <div className={styles.row + ' ' + styles.twoCols}>
@@ -89,39 +100,29 @@ class Index extends React.Component {
 export default Index
 
 export const pageQuery = graphql`
-  query HomeByPath {
-    markdownRemark(fields: { slug: { eq: "/" } }) {
-      html
-      frontmatter {
+  query HomeTeasers  {
+    cmsGeneratedPosts {
+      sticky {
         title
-        sticky
+        date
+        location
+        meta_description
+        thumbnail
+        root
+      }
+      teasers {
+        title
+        location
+        date
+        meta_description
+        thumbnail
         root
         row {
-          teasers {
-            teaser
+          rowImages {
+            image
           }
         }
       }
-      fields {
-        stickyMapped {
-          title
-          date
-          meta_description
-          thumbnail
-          root
-          category
-          location
-        }
-        teasersMapped {
-          title
-          date
-          meta_description
-          thumbnail
-          root
-          category
-          location
-        }
-      }
-    }
+  	}
   }
 `;
