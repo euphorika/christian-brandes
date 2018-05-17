@@ -61,13 +61,13 @@ collections:
         widget: "list"
         required: false
         fields:
-          - { label: "Vertical Position", name: vertcialPosition }
+          - { label: "Vertical Position", name: verticalPosition }
           - label: "Row Images"
             name: rowImages
             widget: list
             required: false
             fields:
-              - { label: "Vertical Position", name: vertcialPosition }
+              - { label: "Vertical Position", name: verticalPosition }
               - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100 }
               - { label: Image, name: image, widget: image }
       - { label: "Body", name: "body", widget: "markdown", required: false }
