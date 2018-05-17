@@ -5,7 +5,7 @@ sticky: Photo Case 1
 row:
   - teasers:
       - teaser: Photo Case 2
-        verticalPosition: '40'
+        verticalPosition: 40px
         width: 30
       - teaser: Basketball
         width: 20
