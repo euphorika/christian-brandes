@@ -61,10 +61,15 @@ exports.onCreateNode = ({ node, getNode, getNodes, boundActionCreators }) => {
       const sticky = getNodes().filter(node2 => node2.internal.type === 'MarkdownRemark' && node2.frontmatter.title === node.frontmatter.sticky)
       let teasers = []
 
-      node.frontmatter.row[0].teasers.forEach(teaserTitle => {
-        const teaser = getNodes().filter(node2 => node2.internal.type === 'MarkdownRemark' && node2.frontmatter.title === teaserTitle.teaser)
+      node.frontmatter.row.forEach(row => {
+        let cols = []
 
-        teasers.push(teaser[0].frontmatter)
+        row.teasers.forEach(teaserTitle => {
+          const teaser = getNodes().filter(node2 => node2.internal.type === 'MarkdownRemark' && node2.frontmatter.title === teaserTitle.teaser)
+          cols.push(teaser[0].frontmatter)
+        })
+
+        teasers.push(cols)
       })
 
       const fieldData = {
