@@ -1,91 +1,38 @@
 import React from "react"
+import Teaser from "../components/teaser"
 import styles from "./index.module.scss"
 
 class Index extends React.Component {
 
+  renderPosts(teasers) {
+    return teasers.map((row, key) => {
+      return (
+        <div key={key} className={styles.row}>
+          {row.map((col, key) => {
+            return (
+              <div key={key} className={styles.col}>
+                <Teaser teaser={col} />
+              </div>
+            )
+          })}
+        </div>
+      )
+    })
+  }
+
   render() {
-    const { markdownRemark } = this.props.data
+    const { cmsGeneratedPosts } = this.props.data
+    const { sticky, teasers } = cmsGeneratedPosts
 
     return (
       <div>
-        <h1>{markdownRemark.frontmatter.title}</h1>
         <div className={styles.posts + ' ' + styles.sticky}>
           <div className={styles.row}>
-            <figure>
-              <img src="/assets/cb-placeholder-1.jpg" alt="" />
-              <figcaption>
-                <h1>Rooftop Basketball</h1>
-                <p>Barcelona, June 2016</p>
-              </figcaption>
-            </figure>
+            <Teaser teaser={sticky} />
           </div>
         </div>
         <div className={styles.posts}>
-          <div className={styles.row + ' ' + styles.twoCols}>
-            <div className={styles.col}>
-              <figure>
-                <img src="/assets/cb-placeholder-5.jpg" alt="" />
-                <figcaption>
-                  <h1>Rooftop Basketball</h1>
-                  <p>Barcelona, June 2016</p>
-                </figcaption>
-              </figure>
-            </div>
-            <div className={styles.col}>
-              <figure>
-                <img src="/assets/cb-placeholder-6.jpg" alt="" />
-                <figcaption>
-                  <h1>Rooftop Basketball</h1>
-                  <p>Barcelona, June 2016</p>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div className={styles.row}>
-            <figure>
-              <img src="/assets/cb-placeholder-8.jpg" alt="" />
-              <figcaption>
-                <h1>Rooftop Basketball</h1>
-                <p>Barcelona, June 2016</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className={styles.row}>
-            <figure>
-              <img src="/assets/cb-placeholder-9.jpg" alt="" />
-              <figcaption>
-                <h1>Rooftop Basketball</h1>
-                <p>Barcelona, June 2016</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className={styles.row}>
-            <figure>
-              <img src="/assets/cb-placeholder-10.jpg" alt="" />
-              <figcaption>
-                <h1>Rooftop Basketball</h1>
-                <p>Barcelona, June 2016</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className={styles.row}>
-            <figure>
-              <img src="/assets/cb-placeholder-11.jpg" alt="" />
-              <figcaption>
-                <h1>Rooftop Basketball</h1>
-                <p>Barcelona, June 2016</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className={styles.row}>
-            <figure>
-              <img src="/assets/cb-placeholder-12.jpg" alt="" />
-              <figcaption>
-                <h1>Rooftop Basketball</h1>
-                <p>Barcelona, June 2016</p>
-              </figcaption>
-            </figure>
-          </div>
+          {this.renderPosts(teasers)}
         </div>
       </div>
     )
@@ -96,14 +43,24 @@ class Index extends React.Component {
 export default Index
 
 export const pageQuery = graphql`
-  query HomeByPathIndex {
-    markdownRemark(fields: { slug: { eq: "/" } }) {
-      html
-      frontmatter {
+  query HomeTeasers  {
+    cmsGeneratedPosts {
+      sticky {
         title
-        sticky
+        date
+        location
+        meta_description
+        thumbnail
         root
       }
-    }
+      teasers {
+        title
+        location
+        date
+        meta_description
+        thumbnail
+        root
+      }
+  	}
   }
 `;

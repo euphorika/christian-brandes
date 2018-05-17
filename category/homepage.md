@@ -1,6 +1,7 @@
 ---
 title: homepage
 root: true
+category: true
 sticky: Photo Case 1
 row:
   - teasers:
@@ -10,4 +11,3 @@ row:
       - teaser: Guitar
       - teaser: Roadtrippin California
 ---
-
