@@ -64,12 +64,20 @@ exports.onCreateNode = ({ node, getNode, getNodes, boundActionCreators }) => {
       node.frontmatter.row.forEach(row => {
         let cols = []
 
-        row.teasers.forEach(teaserTitle => {
-          const teaser = getNodes().filter(node2 => node2.internal.type === 'MarkdownRemark' && node2.frontmatter.title === teaserTitle.teaser)
-          cols.push(teaser[0].frontmatter)
+        row.teasers.forEach(teaser => {
+          let col = getNodes().filter(node2 => node2.internal.type === 'MarkdownRemark' && node2.frontmatter.title === teaser.teaser)[0].frontmatter
+
+          col.marginTop = teaser.verticalPosition ? teaser.verticalPosition : '0'
+          col.width = teaser.width ? teaser.width + '%' : 'auto'
+
+          cols.push(col)
         })
 
-        teasers.push(cols)
+        teasers.push({
+          marginTop: row.verticalPosition ? row.verticalPosition : '0',
+          cols: cols
+        })
+
       })
 
       const fieldData = {

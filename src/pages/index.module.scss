@@ -47,7 +47,7 @@ figure {
       .col {
         @for $i from 2 through $maxCols {
           &:nth-last-child(#{$i}) {
-            margin-top: ($i - 1) * $stepMargin;
+            padding-top: ($i - 1) * $stepMargin;
           }
         }
       }
@@ -59,7 +59,7 @@ figure {
       .col {
         @for $i from 2 through $maxCols {
           &:nth-child(#{$i}) {
-            margin-top: ($i - 1) * $stepMargin;
+            padding-top: ($i - 1) * $stepMargin;
           }
         }
       }

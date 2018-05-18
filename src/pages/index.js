@@ -6,15 +6,14 @@ class Index extends React.Component {
 
   renderPosts(teasers) {
     return teasers.map((row, key) => {
+
+      const inlineStyles = {
+        marginTop: row.marginTop
+      }
+
       return (
-        <div key={key} className={styles.row}>
-          {row.map((col, key) => {
-            return (
-              <div key={key} className={styles.col}>
-                <Teaser teaser={col} />
-              </div>
-            )
-          })}
+        <div key={key} className={styles.row} style={inlineStyles}>
+          {row.cols.map((col, key) => <Teaser key={key} teaser={col} /> )}
         </div>
       )
     })
@@ -54,12 +53,17 @@ export const pageQuery = graphql`
         root
       }
       teasers {
-        title
-        location
-        date
-        meta_description
-        thumbnail
-        root
+        marginTop
+        cols {
+          title
+          location
+          date
+          meta_description
+          thumbnail
+          root
+          width
+          marginTop
+        }
       }
   	}
   }
