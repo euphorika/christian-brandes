@@ -7,10 +7,11 @@ row:
       - teaser: Boulevard Streetwear
         width: 40
   - teasers:
-      - teaser: Pumpin with K
+      - teaser: Kashmir
         width: 60
+    verticalPosition: '-40%'
   - teasers:
-      - teaser: Guitar
+      - teaser: Kashmir
         width: 65
     verticalPosition: ''
 ---
