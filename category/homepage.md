@@ -4,13 +4,13 @@ root: true
 sticky: Basketball
 row:
   - teasers:
-      - teaser: Pumpin with K
-        verticalPosition: ''
-        width: 60
       - teaser: Boulevard Streetwear
         width: 40
   - teasers:
-      - teaser: Kashmir
+      - teaser: Pumpin with K
+        width: 60
+  - teasers:
+      - teaser: Guitar
         width: 65
     verticalPosition: ''
 ---
