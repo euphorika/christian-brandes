@@ -1,8 +1,8 @@
 ---
 title: Basketball
 location: Barcelona
-date: '2018-03-15'
-thumbnail: /assets/_mg_7571.jpg
+date: '2016-06-15'
+thumbnail: /assets/cb-placeholder-1.jpg
 root: false
 row:
   - rowImages:
