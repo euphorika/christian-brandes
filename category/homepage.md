@@ -1,7 +1,7 @@
 ---
 title: homepage
 root: true
-sticky: Photo Case 1
+sticky: Basketball
 row:
   - teasers:
       - teaser: Photo Case 2
