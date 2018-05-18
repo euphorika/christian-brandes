@@ -8,7 +8,7 @@ row:
         verticalPosition: ''
         width: 60
       - teaser: Boulevard Streetwear
-        width: 43
+        width: 40
   - teasers:
       - teaser: Kashmir
         width: 65
