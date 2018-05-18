@@ -2,6 +2,7 @@
 title: Basketball
 location: Barcelona
 date: '2016-06-15'
+meta_description: Basketball - Barcelona June 2016
 thumbnail: /assets/cb-placeholder-1.jpg
 root: false
 row:
