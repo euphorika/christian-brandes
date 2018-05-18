@@ -14,6 +14,12 @@ figure {
     .row {
       width: 100%;
       margin: 0;
+      padding: 0;
+
+      .col {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
     }
   }
 
@@ -21,8 +27,7 @@ figure {
     display: flex;
     justify-content: space-between;
     text-transform: uppercase;
-    margin: 50px 0;
-    padding: 0 25px;
+    padding: 50px 25px;
     position: relative;
 
     h1, h2, p {
@@ -35,7 +40,7 @@ figure {
     }
 
     .col {
-      padding: 0 20px
+      padding: 0 45px
     }
 
     $maxCols: 5;
