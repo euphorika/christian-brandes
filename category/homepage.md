@@ -12,6 +12,6 @@ row:
   - teasers:
       - teaser: Kashmir
         width: 65
-    verticalPosition: '-30px'
+    verticalPosition: ''
 ---
 
