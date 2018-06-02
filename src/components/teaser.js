@@ -1,10 +1,11 @@
 import React from "react"
+import Img from "gatsby-image"
 import styles from "../pages/index.module.scss"
 
 class Teaser extends React.Component {
 
   render() {
-    const { teaser } = this.props
+    const { teaser, img } = this.props
     const date = new Date(teaser.date)
 
     const inlineStyles = {
@@ -15,7 +16,7 @@ class Teaser extends React.Component {
     return (
       <div className={styles.col} style={inlineStyles}>
         <figure>
-          <img src={teaser.thumbnail} alt="" />
+          <Img sizes={img.sizes} />
           <figcaption>
             <h2>{teaser.title}</h2>
             <p>{teaser.location},&nbsp;{date.toLocaleString('en-us', { month: 'long' })}&nbsp;{date.getFullYear()}</p>

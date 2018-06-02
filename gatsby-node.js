@@ -15,7 +15,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           node {
             frontmatter {
               root
-              category
               title
             }
             fields {

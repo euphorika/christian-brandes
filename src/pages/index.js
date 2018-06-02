@@ -5,6 +5,7 @@ import styles from "./index.module.scss"
 class Index extends React.Component {
 
   renderPosts(teasers) {
+    return; // set "img"
     return teasers.map((row, key) => {
 
       const inlineStyles = {
@@ -20,14 +21,14 @@ class Index extends React.Component {
   }
 
   render() {
-    const { cmsGeneratedPosts } = this.props.data
+    const { cmsGeneratedPosts, stickyImage } = this.props.data
     const { sticky, teasers } = cmsGeneratedPosts
 
     return (
       <div>
         <div className={styles.posts + ' ' + styles.sticky}>
           <div className={styles.row}>
-            <Teaser teaser={sticky} />
+            <Teaser teaser={sticky} img={stickyImage} />
           </div>
         </div>
         <div className={styles.posts}>
@@ -66,5 +67,10 @@ export const pageQuery = graphql`
         }
       }
   	}
+    stickyImage: imageSharp(id: { regex: "/cb-placeholder-1.jpg/" }) {
+      sizes(maxWidth: 630) {
+        ...GatsbyImageSharpSizes
+      }
+    }
   }
 `;
