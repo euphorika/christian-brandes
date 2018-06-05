@@ -7,6 +7,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
   return graphql(`
     {
+      cmsGeneratedPosts {
+        sticky {
+          thumbnail
+        }
+      }
       allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
@@ -30,14 +35,26 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     }
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      const templatePath = `src/templates/postTemplate.js`
+      const postTemplatePath = `src/templates/postTemplate.js`
+      const indexTemplatePath = `src/templates/indexTemplate.js`
 
       if (!node.frontmatter.root) {
         createPage({
           path: node.fields.slug,
-          component: path.resolve(templatePath),
+          component: path.resolve(postTemplatePath),
           context: {
             slug: node.fields.slug
+          },
+        });
+      } else {
+        const thumbnail = result.data.cmsGeneratedPosts.sticky.thumbnail + "/";
+
+        createPage({
+          path: node.fields.slug,
+          component: path.resolve(indexTemplatePath),
+          context: {
+            slug: node.fields.slug,
+            thumbnail: thumbnail,
           },
         });
       }
@@ -94,7 +111,7 @@ exports.onCreateNode = ({ node, getNode, getNodes, boundActionCreators }) => {
           contentDigest: crypto.createHash(`md5`).update(JSON.stringify(fieldData)).digest(`hex`),
           content: JSON.stringify(fieldData),
           description: `Generetad posts from Netlify CMS relation fields`
-        }
+        },
       })
 
     }
