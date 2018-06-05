@@ -11,6 +11,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         sticky {
           thumbnail
         }
+        teasers {
+          cols {
+            thumbnail
+          }
+        }
       }
       allMarkdownRemark(
         sort: { order: DESC, fields: [frontmatter___date] }
@@ -47,7 +52,18 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           },
         });
       } else {
-        const thumbnail = result.data.cmsGeneratedPosts.sticky.thumbnail + "/";
+        const { cmsGeneratedPosts } = result.data
+        const { sticky } = cmsGeneratedPosts
+        const { teasers } = cmsGeneratedPosts
+        const thumbnail = "/" + sticky.thumbnail + "/"
+
+        let teaserThumbnails = []
+
+        teasers.forEach(teaser => {
+          teaser.cols.forEach(col => {
+            teaserThumbnails.push(col.thumbnail)
+          })
+        })
 
         createPage({
           path: node.fields.slug,
@@ -55,6 +71,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           context: {
             slug: node.fields.slug,
             thumbnail: thumbnail,
+            teasers: "/(" + teaserThumbnails.join('|') + ")/"
           },
         });
       }
