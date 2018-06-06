@@ -8,6 +8,10 @@ export default function Template({
   const { cmsGeneratedPosts, stickyImage, teaserImages } = data
   const { sticky, teasers } = cmsGeneratedPosts
 
+  const getImageSizes = (thumbnail, teaserImages) => {
+    return teaserImages.edges.find(edge => edge.node.id.includes(thumbnail)).node
+  }
+
   const renderPosts = teasers => {
     return teasers.map((row, keyRow) => {
 
@@ -17,7 +21,7 @@ export default function Template({
 
       return (
         <div key={keyRow} className={styles.row} style={inlineStyles}>
-          {row.cols.map((col, keyCol) => <Teaser key={keyCol} teaser={col} img={teaserImages.edges[keyRow + keyCol].node} /> )}
+          {row.cols.map((col, keyCol) => <Teaser key={keyCol} teaser={col} img={getImageSizes(col.thumbnail, teaserImages)} /> )}
         </div>
       )
     })
@@ -77,6 +81,7 @@ export const pageQuery = graphql`
     teaserImages: allImageSharp(filter: {id:{ regex: $teasers } } ) {
       edges {
         node {
+          id
           sizes(maxWidth: 900) {
             ...GatsbyImageSharpSizes
           }
