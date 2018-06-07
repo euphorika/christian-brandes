@@ -1,3 +1,5 @@
+@import '../scss/variables';
+
 figure {
   display: block;
   margin: 0;
@@ -28,7 +30,9 @@ figure {
     display: flex;
     justify-content: space-between;
     text-transform: uppercase;
-    padding: 50px 25px;
+    margin-left: -$spaceBetween + $minPagePadding;
+    margin-right: -$spaceBetween + $minPagePadding;
+    padding: 50px 0;
     position: relative;
 
     h1, h2, p {
@@ -41,12 +45,10 @@ figure {
     }
 
     .col {
-      padding: 0 45px;
+      padding: 0 $spaceBetween;
       flex: 1;
     }
 
-    $maxCols: 5;
-    $stepMargin: 100px;
 
     &:nth-child(odd) {
       justify-content: flex-end;

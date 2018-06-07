@@ -1,3 +1,5 @@
+@import '../scss/variables';
+
 html {
   box-sizing: border-box;
 }
@@ -32,13 +34,13 @@ a {
     .logo {
       position: absolute;
       top: 0;
-      left: 15px;
+      left: $minPagePadding;
       width: 25px;
     }
 
     .navigation {
       position: absolute;
-      right: 15px;
+      right: $minPagePadding;
       top: 0;
       width: 25px;
       height: 25px;
@@ -48,7 +50,7 @@ a {
   .footer {
     position: absolute;
     bottom: 15px;
-    right: 15px;
+    right: $minPagePadding;
     font-size: 12px;
     text-align: right;
     text-transform: uppercase;

@@ -47,7 +47,9 @@ export default function Template({
     <div className={styles.singlePost}>
       <div className={styles.posts + ' ' + styles.sticky}>
         <div className={styles.row}>
-          <Img sizes={headerImage.sizes} />
+          <div className={styles.col}>
+            <Img sizes={headerImage.sizes} />
+          </div>
         </div>
       </div>
       <div className={styles.posts}>
