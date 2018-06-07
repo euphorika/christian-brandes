@@ -20,5 +20,6 @@ row:
       - teaser: Roadtrippin California
         width: 20
       - teaser: Photo Case 1
+        verticalPosition: '-20%'
 ---
 
