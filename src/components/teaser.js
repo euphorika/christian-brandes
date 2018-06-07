@@ -10,7 +10,7 @@ class Teaser extends React.Component {
 
     const inlineStyles = {
       marginTop: teaser.marginTop,
-      width: teaser.width
+      flex: teaser.width
     }
 
     return (

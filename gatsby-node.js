@@ -114,7 +114,7 @@ exports.onCreateNode = ({ node, getNode, getNodes, boundActionCreators }) => {
 
           col.slug = node.fields.slug
           col.marginTop = teaser.verticalPosition ? teaser.verticalPosition : '0'
-          col.width = teaser.width ? teaser.width + '%' : 'auto'
+          col.width = teaser.width ? teaser.width / 100 : 1
 
           cols.push(col)
         })

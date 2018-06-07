@@ -29,7 +29,7 @@ export default function Template({
           {row.rowImages.map((col, keyCol) => {
 
             const inlineStyles = {
-              width: col.width ? col.width : 100 / row.rowImages.length + '%'
+
             }
 
             return (
