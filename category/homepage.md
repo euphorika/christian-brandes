@@ -13,7 +13,7 @@ row:
         width: 65
     verticalPosition: ''
   - teasers:
-      - teaser: Kashmir
+      - teaser: Guitar
         width: 50
       - teaser: Roadtrippin California
         width: 20
