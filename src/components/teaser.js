@@ -1,26 +1,23 @@
 import React from "react"
+import Link from "gatsby-link"
+import Figure from "./figure"
 import styles from "../pages/index.module.scss"
 
 class Teaser extends React.Component {
 
   render() {
-    const { teaser } = this.props
-    const date = new Date(teaser.date)
+    const { teaser, img } = this.props
 
     const inlineStyles = {
       marginTop: teaser.marginTop,
-      width: teaser.width
+      flex: teaser.width
     }
 
     return (
       <div className={styles.col} style={inlineStyles}>
-        <figure>
-          <img src={teaser.thumbnail} alt="" />
-          <figcaption>
-            <h2>{teaser.title}</h2>
-            <p>{teaser.location},&nbsp;{date.toLocaleString('en-us', { month: 'long' })}&nbsp;{date.getFullYear()}</p>
-          </figcaption>
-        </figure>
+        <Link to={teaser.slug}>
+          <Figure teaser={teaser} img={img} />
+        </Link>
       </div>
     )
   }

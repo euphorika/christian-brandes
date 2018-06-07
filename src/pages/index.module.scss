@@ -15,6 +15,7 @@ figure {
       width: 100%;
       margin: 0;
       padding: 0;
+      display: block;
 
       .col {
         padding-top: 0;
@@ -40,7 +41,8 @@ figure {
     }
 
     .col {
-      padding: 0 45px
+      padding: 0 45px;
+      flex: 1;
     }
 
     $maxCols: 5;
