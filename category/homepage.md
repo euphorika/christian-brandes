@@ -13,11 +13,11 @@ row:
         width: 65
     verticalPosition: ''
   - teasers:
-      - teaser: Guitar
+      - teaser: Kashmir
         width: 50
       - teaser: Roadtrippin California
         width: 20
       - teaser: Photo Case 1
-        verticalPosition: '-20%'
+        verticalPosition: ''
 ---
 
