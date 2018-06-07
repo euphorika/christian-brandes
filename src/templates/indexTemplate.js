@@ -20,7 +20,7 @@ export default function Template({
       }
 
       return (
-        <div key={keyRow} className={styles.row} style={inlineStyles}>
+        <div key={keyRow} className={styles.row} style={inlineStyles}>    
           {row.cols.map((col, keyCol) => <Teaser key={keyCol} teaser={col} img={getImageSizes(col.thumbnail, teaserImages)} /> )}
         </div>
       )
@@ -57,6 +57,7 @@ export const pageQuery = graphql`
         location
         meta_description
         thumbnail
+        slug
         root
       }
       teasers {
@@ -70,6 +71,7 @@ export const pageQuery = graphql`
           root
           width
           marginTop
+          slug
         }
       }
     }
