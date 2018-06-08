@@ -1,0 +1,14 @@
+$translateDist: 200px;
+$transitionDuration: 0.5s;
+
+.animate {
+  transition: transform $transitionDuration ease-in-out;
+}
+
+.animateUp {
+  transform: translate(0,-$translateDist);
+}
+
+.animationDown {
+  transform: translate(0,$translateDist);
+}

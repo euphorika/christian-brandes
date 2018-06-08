@@ -1,6 +1,7 @@
 import React from "react"
 import Link from "gatsby-link"
 import Figure from "./figure"
+import TeaserAnimation from "../components/teaserAnimation"
 import styles from "../pages/index.module.scss"
 
 class Teaser extends React.Component {
@@ -15,9 +16,11 @@ class Teaser extends React.Component {
 
     return (
       <div className={styles.col} style={inlineStyles}>
-        <Link to={teaser.slug}>
-          <Figure teaser={teaser} img={img} />
-        </Link>
+        <TeaserAnimation>
+          <Link to={teaser.slug}>
+            <Figure teaser={teaser} img={img} />
+          </Link>
+        </TeaserAnimation>
       </div>
     )
   }

@@ -1,6 +1,7 @@
 import React from "react"
 import BaseTemplate from "./baseTemplate";
 import Img from "gatsby-image"
+import TeaserAnimation from "../components/teaserAnimation"
 import styles from "../pages/index.module.scss"
 
 class PostTemplate extends BaseTemplate {
@@ -26,7 +27,9 @@ class PostTemplate extends BaseTemplate {
 
             return (
               <div key={keyCol} className={styles.col} style={inlineStyles}>
-                <Img sizes={this.getImageSizes(col.image, images).sizes} />
+                <TeaserAnimation>
+                  <Img sizes={this.getImageSizes(col.image, images).sizes} />
+                </TeaserAnimation>
               </div>
             )
           })}
@@ -45,7 +48,9 @@ class PostTemplate extends BaseTemplate {
         <div className={styles.posts + ' ' + styles.sticky}>
           <div className={styles.row}>
             <div className={styles.col}>
-              <Img sizes={headerImage.sizes} />
+              <TeaserAnimation>
+                <Img sizes={headerImage.sizes} />
+              </TeaserAnimation>
             </div>
           </div>
         </div>
