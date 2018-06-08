@@ -1,5 +1,7 @@
 import React from "react"
 import Link from "gatsby-link"
+import Lightbox from "../components/lightbox"
+import AboutComponent from "../components/about"
 import styles from "./layout.module.scss"
 
 export default ({ children }) => (
@@ -25,5 +27,8 @@ export default ({ children }) => (
         <a href="#">Impressum &amp; Datenschutz</a>
       </nav>
     </footer>
+    <Lightbox visible={false}>
+      <AboutComponent />
+    </Lightbox>
   </div>
 );
