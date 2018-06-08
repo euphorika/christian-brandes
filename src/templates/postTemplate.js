@@ -1,19 +1,11 @@
-import React from "react";
+import React from "react"
+import BaseTemplate from "./baseTemplate";
 import Img from "gatsby-image"
 import styles from "../pages/index.module.scss"
 
-export default function Template({
-  data, // this prop will be injected by the GraphQL query below.
-}) {
+class PostTemplate extends BaseTemplate {
 
-  const { markdownRemark, headerImage, images } = data;
-  const { frontmatter } = markdownRemark
-
-  const getImageSizes = (thumbnail, images) => {
-    return images.edges.find(edge => edge.node.id.includes(thumbnail)).node
-  }
-
-  const renderImages = postImages => {
+  renderImages(postImages, images) {
     if (!postImages) {
       return
     }
@@ -34,7 +26,7 @@ export default function Template({
 
             return (
               <div key={keyCol} className={styles.col} style={inlineStyles}>
-                <Img sizes={getImageSizes(col.image, images).sizes} />
+                <Img sizes={this.getImageSizes(col.image, images).sizes} />
               </div>
             )
           })}
@@ -43,21 +35,29 @@ export default function Template({
     })
   }
 
-  return (
-    <div className={styles.singlePost}>
-      <div className={styles.posts + ' ' + styles.sticky}>
-        <div className={styles.row}>
-          <div className={styles.col}>
-            <Img sizes={headerImage.sizes} />
+  render() {
+
+    const { markdownRemark, headerImage, images } = this.props.data;
+    const { frontmatter } = markdownRemark
+
+    return (
+      <div className={styles.singlePost}>
+        <div className={styles.posts + ' ' + styles.sticky}>
+          <div className={styles.row}>
+            <div className={styles.col}>
+              <Img sizes={headerImage.sizes} />
+            </div>
           </div>
         </div>
+        <div className={styles.posts}>
+          {this.renderImages(frontmatter.row, images)}
+        </div>
       </div>
-      <div className={styles.posts}>
-        {renderImages(frontmatter.row)}
-      </div>
-    </div>
-  )
+    )
+  }
 }
+
+export default PostTemplate
 
 export const pageQuery = graphql`
   query PostByPath($slug: String!, $headerImage: String!, $images: String!) {

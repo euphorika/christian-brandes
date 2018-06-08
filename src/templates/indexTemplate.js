@@ -1,18 +1,11 @@
-import React from "react";
+import React from "react"
+import BaseTemplate from "./baseTemplate"
 import Teaser from "../components/teaser"
 import styles from "../pages/index.module.scss"
 
-export default function Template({
-  data, // this prop will be injected by the GraphQL query below.
-}) {
-  const { cmsGeneratedPosts, stickyImage, teaserImages } = data
-  const { sticky, teasers } = cmsGeneratedPosts
+class IndexTemplate extends BaseTemplate {
 
-  const getImageSizes = (thumbnail, teaserImages) => {
-    return teaserImages.edges.find(edge => edge.node.id.includes(thumbnail)).node
-  }
-
-  const renderPosts = teasers => {
+  renderPosts(teasers, teaserImages) {
     return teasers.map((row, keyRow) => {
 
       const inlineStyles = {
@@ -20,26 +13,34 @@ export default function Template({
       }
 
       return (
-        <div key={keyRow} className={styles.row} style={inlineStyles}>    
-          {row.cols.map((col, keyCol) => <Teaser key={keyCol} teaser={col} img={getImageSizes(col.thumbnail, teaserImages)} /> )}
+        <div key={keyRow} className={styles.row} style={inlineStyles}>
+          {row.cols.map((col, keyCol) => <Teaser key={keyCol} teaser={col} img={this.getImageSizes(col.thumbnail, teaserImages)} /> )}
         </div>
       )
     })
   }
 
-  return (
-    <div>
-      <div className={styles.posts + ' ' + styles.sticky}>
-        <div className={styles.row}>
-          <Teaser teaser={sticky} img={stickyImage} />
+  render() {
+    const { cmsGeneratedPosts, stickyImage, teaserImages } = this.props.data
+    const { sticky, teasers } = cmsGeneratedPosts
+
+    return (
+      <div>
+        <div className={styles.posts + ' ' + styles.sticky}>
+          <div className={styles.row}>
+            <Teaser teaser={sticky} img={stickyImage} />
+          </div>
+        </div>
+        <div className={styles.posts}>
+          {this.renderPosts(teasers, teaserImages)}
         </div>
       </div>
-      <div className={styles.posts}>
-        {renderPosts(teasers)}
-      </div>
-    </div>
-  );
+    );
+  }
+
 }
+
+export default IndexTemplate
 
 export const pageQuery = graphql`
   query IndexByPath($slug: String!, $thumbnail: String!, $teasers: String!) {
