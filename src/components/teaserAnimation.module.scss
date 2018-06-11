@@ -1,14 +1,23 @@
-$translateDist: 200px;
-$transitionDuration: 0.5s;
+$translateDist: 100px;
+$transitionTransformDuration: 0.5s;
+$transitionOpacityDuration: 0.8s;
 
 .animate {
-  transition: transform $transitionDuration ease-in-out;
+  transition: transform $transitionTransformDuration ease-in-out, opacity $transitionOpacityDuration;
+}
+
+.animationInside {
+  opacity: 1;
+}
+
+.animationOutside {
+  opacity: 0;
 }
 
 .animateUp {
-  transform: translate(0,-$translateDist);
+  transform: translate(0, -$translateDist);
 }
 
 .animationDown {
-  transform: translate(0,$translateDist);
+  transform: translate(0, $translateDist);
 }
