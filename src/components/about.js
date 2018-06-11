@@ -37,7 +37,7 @@ class AboutComponent extends React.Component {
           <div className={styles.contactItem}>
             <div className={styles.label}>Cell</div>
             <div className={styles.value}>
-              <a rel="tel" href="+4917641250470">+49(0)176 41250470</a>
+              <a href="tel:+4917641250470">+49(0)176 41250470</a>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from "react"
+import IconClose from "./icon-close"
 import styles from "./lightbox.module.scss"
 
 class Lightbox extends React.Component {
@@ -7,6 +8,7 @@ class Lightbox extends React.Component {
     super(props)
 
     this.state = {
+      closeLink: this.props.closeTo ? this.props.closeTo : '/',
       visible: this.props.visible
     }
   }
@@ -18,7 +20,12 @@ class Lightbox extends React.Component {
 
     return (
       <div style={toggleVisibility} className={styles.lightboxContainer}>
-        {this.props.children}
+        <div className={styles.iconClose}>
+          <IconClose to={this.state.closeLink} />
+        </div>
+        <div className={styles.lightboxChildrenContainer}>
+          {this.props.children}
+        </div>
       </div>
     )
   }

@@ -33,12 +33,9 @@ class IndexLayout extends React.Component {
             &copy; Christian Brandes
           </div>
           <nav role="navigation" className={styles.secondaryNavigation}>
-            <a href="#">Impressum &amp; Datenschutz</a>
+            <Link to="/impress-data-privacy">Impressum &amp; Datenschutz</Link>
           </nav>
         </footer>
-        <Lightbox visible={false}>
-          <AboutComponent />
-        </Lightbox>
       </div>
     )
   }
