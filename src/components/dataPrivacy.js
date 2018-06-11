@@ -1,13 +1,12 @@
 import React from "react"
-import styles from "./standard.module.scss"
 
 export default () => (
-  <div className={styles.standardWrapper}>
+  <div>
     <h2>Datenschutzerklärung</h2>
     <p>Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:<br />
        Christian Brandes</p>
     <h3>Ihre Betroffenenrechte</h3>
-    <div className={styles.privacyBlock}>
+    <div>
       Unter den angegebenen Kontaktdaten unseres Datenschutzbeauftragten können Sie jederzeit folgende Rechte ausüben:
       <ul>
         <li>- Auskunft über Ihre bei uns gespeicherten Daten und deren Verarbeitung,</li>

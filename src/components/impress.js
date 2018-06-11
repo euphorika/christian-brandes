@@ -1,23 +1,22 @@
 import React from "react"
-import styles from "./standard.module.scss"
 
 export default () => (
-  <div className={styles.standardWrapper}>
+  <div>
     <h2>Christian Brandes</h2>
-    <div className={styles.label}>Office:</div>
-    <div className={styles.value}>
+    <div>Office:</div>
+    <div>
       Eppendorfer Weg 87a<br />
       20259 Hamburg
     </div>
-    <div className={styles.label}>Email:</div>
-    <div className={styles.value}>kontakt[at]christianbrandes.de</div>
-    <div className={styles.label}>Cell:</div>
-    <div className={styles.value}>
+    <div>Email:</div>
+    <div>kontakt[at]christianbrandes.de</div>
+    <div>Cell:</div>
+    <div>
       <a href="tel:+4917641250470">+49(0)176 41250470</a>
     </div>
-    <div className={styles.label}>UStId:</div>
-    <div className={styles.value}>DE281648859</div>
-    <div className={styles.disclaimer}>
+    <div>UStId:</div>
+    <div>DE281648859</div>
+    <div>
       <h3>Haftung für Inhalte</h3>
       <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
       <h3>Haftung für Links</h3>
