@@ -1,7 +1,9 @@
 import React from "react"
 import Link from "gatsby-link"
+import Img from "gatsby-image"
 import Lightbox from "../components/lightbox"
 import AboutComponent from "../components/about"
+import IconNavigation from "../components/iconNavigation"
 import styles from "./layout.module.scss"
 
 class IndexLayout extends React.Component {
@@ -12,16 +14,17 @@ class IndexLayout extends React.Component {
 
   render() {
     const { children } = this.props
+    const { file } = this.props.data
 
     return (
       <div className={styles.page}>
         <header id="header" className={styles.header}>
-          <Link to="/">
-            <img className={styles.logo} src="/assets/christian-brandes-fotograf-logo.png" alt="Christian Brandes - Photograph Logo" />
+          <Link className={styles.logo} to="/">
+            <Img resolutions={file.childImageSharp.resolutions} alt="Christian Brandes - Photograph Logo" />
           </Link>
           <Link to="/about">
             <nav role="navigation" className={styles.navigation}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><path d="M0 0h500v92.3H0zM0 407.7h500V500H0zM0 203.9h500v92.3H0z"/></svg>
+              <IconNavigation />
             </nav>
           </Link>
         </header>
@@ -42,3 +45,15 @@ class IndexLayout extends React.Component {
 }
 
 export default IndexLayout
+
+export const logoQuery = graphql`
+  query LogoQuery {
+    file(relativePath: { regex: "/christian-brandes-fotograf-logo.png/" }) {
+      childImageSharp {
+        resolutions(width: 25) {
+          ...GatsbyImageSharpResolutions
+        }
+      }
+    }
+  }
+`
