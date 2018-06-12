@@ -42,20 +42,23 @@ class PostTemplate extends BaseTemplate {
 
     const { markdownRemark, headerImage, images } = this.props.data;
     const { frontmatter } = markdownRemark
+    const { transition } = this.props.transition
 
     return (
-      <div className={styles.singlePost}>
-        <div className={styles.posts + ' ' + styles.sticky}>
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <TeaserAnimation>
-                <Img sizes={headerImage.sizes} />
-              </TeaserAnimation>
+      <div style={transition && transition.style}>
+        <div className={styles.singlePost}>
+          <div className={styles.posts + ' ' + styles.sticky}>
+            <div className={styles.row}>
+              <div className={styles.col}>
+                <TeaserAnimation>
+                  <Img sizes={headerImage.sizes} />
+                </TeaserAnimation>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={styles.posts}>
-          {this.renderImages(frontmatter.row, images)}
+          <div className={styles.posts}>
+            {this.renderImages(frontmatter.row, images)}
+          </div>
         </div>
       </div>
     )

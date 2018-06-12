@@ -23,9 +23,10 @@ class IndexTemplate extends BaseTemplate {
   render() {
     const { cmsGeneratedPosts, stickyImage, teaserImages } = this.props.data
     const { sticky, teasers } = cmsGeneratedPosts
+    const { transition } = this.props.transition
 
     return (
-      <div>
+      <div style={transition && transition.style}>
         <div className={styles.posts + ' ' + styles.sticky}>
           <div className={styles.row}>
             <Teaser teaser={sticky} img={stickyImage} />
