@@ -8,7 +8,6 @@ class Lightbox extends React.Component {
     super(props)
 
     this.state = {
-      closeLink: this.props.closeTo ? this.props.closeTo : '/',
       visible: this.props.visible
     }
   }
@@ -22,7 +21,7 @@ class Lightbox extends React.Component {
       <div style={toggleVisibility} className={styles.lightboxContainer}>
         <div className={styles.lightboxInner}>
           <div className={styles.iconClose}>
-            <IconClose to={this.state.closeLink} />
+            <IconClose />
           </div>
           <div className={styles.lightboxChildrenContainer}>
             {this.props.children}
