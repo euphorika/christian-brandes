@@ -20,12 +20,14 @@ class Lightbox extends React.Component {
 
     return (
       <div style={toggleVisibility} className={styles.lightboxContainer}>
-        <div className={styles.iconClose}>
-          <IconClose to={this.state.closeLink} />
-        </div>
-        <div className={styles.lightboxChildrenContainer}>
-          {this.props.children}
-        </div>
+        <div className={styles.lightboxInner}>
+          <div className={styles.iconClose}>
+            <IconClose to={this.state.closeLink} />
+          </div>
+          <div className={styles.lightboxChildrenContainer}>
+            {this.props.children}
+          </div>
+          </div>
       </div>
     )
   }

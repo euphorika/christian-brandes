@@ -29,8 +29,8 @@ ul, li {
 .page {
   position: relative;
   margin: auto;
-  max-width: 900px;
-  padding: 20px 0;
+  max-width: $maxPageWidth;
+  padding: $pagePadding 0;
   min-height: 100vh;
 
   .header {
