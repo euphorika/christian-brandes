@@ -15,5 +15,6 @@ row:
   - rowImages:
       - image: /assets/_mg_7633.jpg
       - image: /assets/_mg_7669.jpg
+  - {}
 ---
 
