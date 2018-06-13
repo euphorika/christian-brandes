@@ -8,6 +8,7 @@ root: false
 row:
   - rowImages:
       - image: /assets/_mg_7491.jpg
+        indentRight: '0'
         verticalPosition: '-20px'
         width: 60
       - image: /assets/_mg_7592.jpg
