@@ -65,9 +65,10 @@ collections:
           - label: "Row Images"
             name: rowImages
             widget: list
-            required: false
             fields:
-              - { label: "Vertical Position", name: verticalPosition }
-              - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100 }
+              - { label: "Vertical Position", name: verticalPosition, default: '0' }
+              - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100, default: 100 }
+              - { label: Indent Left, name: indentLeft, default: '0' }
+              - { label Indent Right, name: indentRight, default: '0' }
               - { label: Image, name: image, widget: image }
       - { label: "Body", name: "body", widget: "markdown", required: false }
