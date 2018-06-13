@@ -8,5 +8,6 @@ category: false
 row:
   - rowImages:
       - image: /assets/_dsf4292.jpg
+        verticalPosition: '0'
 ---
 
