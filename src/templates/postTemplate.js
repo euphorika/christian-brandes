@@ -14,7 +14,7 @@ class PostTemplate extends BaseTemplate {
     return postImages.map((row, keyRow) => {
 
       const inlineStyles = {
-
+        marginTop: row.verticalPosition ? row.verticalPosition : 0
       }
 
       return (
@@ -22,14 +22,22 @@ class PostTemplate extends BaseTemplate {
           {row.rowImages.map((col, keyCol) => {
 
             const inlineStyles = {
+              flex: col.width ? col.width / 100 : 1,
+              marginTop: col.verticalPosition ? col.verticalPosition : '0',
+            }
 
+            const indentStyles = {
+              paddingLeft: col.indentLeft ? col.indentLeft : 0,
+              paddingRight: col.indentRight ? col.indentRight : 0
             }
 
             return (
               <div key={keyCol} className={styles.col} style={inlineStyles}>
-                <TeaserAnimation>
-                  <Img sizes={this.getImageSizes(col.image, images).sizes} />
-                </TeaserAnimation>
+                <div style={indentStyles}>
+                  <TeaserAnimation>
+                    <Img sizes={this.getImageSizes(col.image, images).sizes} />
+                  </TeaserAnimation>
+                </div>
               </div>
             )
           })}
@@ -78,6 +86,10 @@ export const pageQuery = graphql`
           verticalPosition
           rowImages {
             image
+            width
+            verticalPosition
+            indentLeft
+            indentRight
           }
         }
       }
