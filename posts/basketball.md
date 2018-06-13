@@ -11,6 +11,7 @@ row:
         verticalPosition: '-20px'
         width: 60
       - image: /assets/_mg_7592.jpg
+        indentLeft: 20px
   - rowImages:
       - image: /assets/_mg_7633.jpg
       - image: /assets/_mg_7669.jpg
