@@ -7,7 +7,6 @@ thumbnail: /assets/cb-placeholder-1.jpg
 root: false
 row:
   - rowImages:
-      - image: /assets/_mg_7403.jpg
       - image: /assets/_mg_7491.jpg
         verticalPosition: '-20px'
         width: 60
