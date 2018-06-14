@@ -16,7 +16,6 @@ collections:
     fields:
       - { name: title, label: Title }
       - { name: root, label: Root, widget: boolean }
-      - { label: "Category", name: "category", widget: "hidden", default: false }
       - name: sticky
         label: Sticky
         widget: relation
