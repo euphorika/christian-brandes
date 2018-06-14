@@ -18,5 +18,7 @@ row:
         width: .nan
       - teaser: Photo Case 1
         verticalPosition: ''
+  - teasers:
+      - teaser: Guitar
 ---
 
