@@ -80,7 +80,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           path: node.fields.slug,
           component: path.resolve(indexTemplatePath),
           context: {
-            slug: node.fields.slug,
             thumbnail: thumbnail,
             teasers: "/(" + teaserThumbnails.join('|') + ")/"
           },

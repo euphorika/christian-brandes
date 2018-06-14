@@ -43,14 +43,7 @@ class IndexTemplate extends BaseTemplate {
 export default IndexTemplate
 
 export const pageQuery = graphql`
-  query IndexByPath($slug: String!, $thumbnail: String!, $teasers: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        title
-      }
-    }
+  query IndexByPath($thumbnail: String!, $teasers: String!) {
     cmsGeneratedPosts {
       sticky {
         title
