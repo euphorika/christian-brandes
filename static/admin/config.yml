@@ -15,10 +15,8 @@ collections:
     create: true
     fields:
       - { name: title, label: Title }
-      - label: "Root"
-        name: "root"
-        widget: "boolean"
-      - {label: "Category", name: "category", widget: "hidden", default: false}
+      - { name: root, label: Root, widget: boolean }
+      - { label: "Category", name: "category", widget: "hidden", default: false }
       - name: sticky
         label: Sticky
         widget: relation
@@ -29,13 +27,11 @@ collections:
       - name: row
         label: Row
         widget: list
-        required: false
         fields:
           - { name: verticalPosition, label: "Vertical Position" }
           - name: teasers
             label: Teaser
             widget: list
-            required: false,
             fields:
               - { label: "Vertical Position", name: verticalPosition }
               - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100 }
