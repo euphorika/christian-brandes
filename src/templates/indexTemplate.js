@@ -1,4 +1,5 @@
 import React from "react"
+import Helmet from "react-helmet"
 import BaseTemplate from "./baseTemplate"
 import Teaser from "../components/teaser"
 import styles from "../pages/index.module.scss"
@@ -26,6 +27,9 @@ class IndexTemplate extends BaseTemplate {
 
     return (
       <div>
+        <Helmet defaultTitle={`Christian Brandes`} titleTemplate={`%s | Christian Brandes`}>
+          <meta name="description" content="Christian Brandes - Photograph based in Hamburg" />
+        </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
           <div className={styles.row}>
             <Teaser teaser={sticky} img={stickyImage} />

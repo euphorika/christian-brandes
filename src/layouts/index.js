@@ -1,6 +1,7 @@
 import React from "react"
 import Link from "gatsby-link"
 import Img from "gatsby-image"
+import Helmet from "react-helmet"
 import Lightbox from "../components/lightbox"
 import AboutComponent from "../components/about"
 import IconNavigation from "../components/iconNavigation"
@@ -18,6 +19,10 @@ class IndexLayout extends React.Component {
 
     return (
       <div className={styles.page}>
+        <Helmet defaultTitle={`Christian Brandes - Photograph`} titleTemplate={`%s | Christian Brandes - Photograph`}>
+          <meta charSet="utf-8" />
+          <meta name="description" content="Christian Brandes - Photograph based in Hamburg" />
+        </Helmet>
         <header id="header" className={styles.header}>
           <Link className={styles.logo} to="/">
             <Img resolutions={file.childImageSharp.resolutions} alt="Christian Brandes - Photograph Logo" />

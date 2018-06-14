@@ -1,4 +1,5 @@
 import React from "react"
+import Helmet from "react-helmet"
 import BaseTemplate from "./baseTemplate";
 import Img from "gatsby-image"
 import TeaserAnimation from "../components/teaserAnimation"
@@ -53,6 +54,10 @@ class PostTemplate extends BaseTemplate {
 
     return (
       <div className={styles.singlePost}>
+        <Helmet>
+          <title>{frontmatter.title}</title>
+          <meta name="description" content={frontmatter.meta_description} />
+        </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
           <div className={styles.row}>
             <div className={styles.col}>
@@ -79,6 +84,7 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        meta_description
         location
         width
         marginTop
