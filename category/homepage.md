@@ -20,5 +20,6 @@ row:
         verticalPosition: ''
   - teasers:
       - teaser: Guitar
+        width: 66
 ---
 
