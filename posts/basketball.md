@@ -8,11 +8,11 @@ root: false
 row:
   - rowImages:
       - image: /assets/_mg_7592.jpg
+        width: 70
         indentLeft: 20px
-    verticalPosition: 1px
   - rowImages:
       - image: /assets/_mg_7633.jpg
-        width: 40
+        width: 60
       - image: /assets/_mg_7669.jpg
   - rowImages:
       - image: /assets/_mg_7403.jpg
@@ -22,5 +22,8 @@ row:
         width: 60
   - rowImages:
       - image: /assets/_mg_7491.jpg
+        width: 80
+        verticalPosition: 0
+        indentRight: '0'
+        indentLeft: '0'
 ---
-
