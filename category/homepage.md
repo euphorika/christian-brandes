@@ -21,5 +21,8 @@ row:
   - teasers:
       - teaser: Guitar
         width: 66
+  - teasers:
+      - teaser: Photo Case 2
+        width: 75
 ---
 
