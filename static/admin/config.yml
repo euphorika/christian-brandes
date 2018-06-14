@@ -39,6 +39,8 @@ collections:
             fields:
               - { label: "Vertical Position", name: verticalPosition }
               - { label: Width, name: width, widget: number, valueType: float, min: 0, max: 100 }
+              - { label: Indent Left, name: indentLeft, widget: string, default: "0" }
+              - { label: Indent Right, name: indentRight, widget: string, default: "0" }
               - name: teaser
                 label: Teaser
                 widget: relation

@@ -72,6 +72,8 @@ export const pageQuery = graphql`
           root
           width
           marginTop
+          paddingLeft
+          paddingRight
           slug
         }
       }

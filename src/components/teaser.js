@@ -14,13 +14,20 @@ class Teaser extends React.Component {
       flex: teaser.width
     }
 
+    const indentStyles = {
+      paddingLeft: teaser.paddingLeft,
+      paddingRight: teaser.paddingRight
+    }
+
     return (
       <div className={styles.col} style={inlineStyles}>
-        <TeaserAnimation>
-          <Link to={teaser.slug}>
-            <Figure teaser={teaser} img={img} />
-          </Link>
-        </TeaserAnimation>
+        <div style={indentStyles}>
+          <TeaserAnimation>
+            <Link to={teaser.slug}>
+              <Figure teaser={teaser} img={img} />
+            </Link>
+          </TeaserAnimation>
+        </div>
       </div>
     )
   }
