@@ -9,7 +9,7 @@ row:
   - rowImages:
       - image: /assets/_mg_7592.jpg
         indentLeft: 20px
-    verticalPosition: '0'
+    verticalPosition: 1px
   - rowImages:
       - image: /assets/_mg_7633.jpg
         width: 40
