@@ -9,14 +9,13 @@ row:
       - teaser: Boulevard Streetwear
         width: 40
   - teasers:
-      - teaser: Kashmir
+      - indentLeft: 15%
+        teaser: Kashmir
         width: 65
     verticalPosition: ''
   - teasers:
-      - teaser: Guitar
-        width: 50
       - teaser: Roadtrippin California
-        width: 20
+        width: .nan
       - teaser: Photo Case 1
         verticalPosition: ''
 ---
