@@ -1,6 +1,6 @@
 $translateDist: 100px;
-$transitionTransformDuration: 0.5s;
-$transitionOpacityDuration: 0.8s;
+$transitionTransformDuration: 0.6s;
+$transitionOpacityDuration: 0.3s;
 
 .animate {
   transition: transform $transitionTransformDuration ease-in-out, opacity $transitionOpacityDuration;

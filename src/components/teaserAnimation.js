@@ -11,7 +11,7 @@ class TeaserAnimation extends React.Component {
     this.state = {
       animationDirection: null,
       teaserInside: null,
-      offset: '15%'
+      offset: '5%'
     }
 
     this.onEnter = this.onEnter.bind(this)
