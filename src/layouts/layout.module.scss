@@ -1,4 +1,5 @@
 @import '../scss/variables';
+@import '../scss/breakpoints';
 
 html {
   box-sizing: border-box;
@@ -31,6 +32,7 @@ ul, li {
   margin: auto;
   max-width: $maxPageWidth;
   padding: $pagePadding 0;
+  padding-bottom: 70px;
   min-height: 100vh;
 
   .header {
@@ -40,15 +42,24 @@ ul, li {
       position: absolute;
       top: 0;
       left: $minPagePadding;
-      width: 25px;
+      width: $logoWidth * 0.7;
+
+      @include breakpoint('s') {
+        width: $logoWidth;
+      }
     }
 
     .navigation {
       position: absolute;
       right: $minPagePadding;
       top: 0;
-      width: $iconWidth;
-      height: $iconHeight;
+      width: $iconWidth * 0.7;
+      height: $iconHeight * 0.7;
+
+      @include breakpoint('s') {
+        width: $iconWidth;
+        height: $iconHeight;
+      }
     }
   }
 

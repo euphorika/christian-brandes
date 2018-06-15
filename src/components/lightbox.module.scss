@@ -1,4 +1,5 @@
 @import '../scss/variables';
+@import '../scss/breakpoints';
 
 .lightboxContainer {
   position: fixed;
@@ -12,7 +13,16 @@
   .lightboxInner {
     max-width: $maxPageWidth;
     margin: 0 auto;
-    padding: 100px;
+    padding: 50px 25px;
+
+    @include breakpoint('s') {
+      padding: 75px;
+    }
+
+    @include breakpoint('m') {
+      padding: 100px;
+    }
+
     position: relative;
     text-transform: uppercase;
     font-size: 10px;

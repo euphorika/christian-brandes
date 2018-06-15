@@ -12,6 +12,8 @@ class PostTemplate extends BaseTemplate {
       return
     }
 
+    let isOdd = true
+
     return postImages.map((row, keyRow) => {
 
       const inlineStyles = {
@@ -32,9 +34,11 @@ class PostTemplate extends BaseTemplate {
               paddingRight: col.indentRight ? col.indentRight : 0
             }
 
+            isOdd = !isOdd
+
             return (
               <div key={keyCol} className={styles.col} style={inlineStyles}>
-                <div style={indentStyles}>
+                <div className={isOdd ? styles.odd : styles.even} style={indentStyles}>
                   <TeaserAnimation>
                     <Img sizes={this.getImageSizes(col.image, images).sizes} />
                   </TeaserAnimation>

@@ -7,7 +7,7 @@ import styles from "../pages/index.module.scss"
 class Teaser extends React.Component {
 
   render() {
-    const { teaser, img } = this.props
+    const { teaser, img, isOdd } = this.props
 
     const inlineStyles = {
       marginTop: teaser.marginTop,
@@ -19,9 +19,15 @@ class Teaser extends React.Component {
       paddingRight: teaser.paddingRight
     }
 
+    let oddOrEven = ''
+
+    if (isOdd !== undefined) {
+      oddOrEven = isOdd ? styles.odd : styles.even
+    }
+
     return (
       <div className={styles.col} style={inlineStyles}>
-        <div style={indentStyles}>
+        <div className={oddOrEven} style={indentStyles}>
           <TeaserAnimation>
             <Link to={teaser.slug}>
               <Figure teaser={teaser} img={img} />

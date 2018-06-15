@@ -7,6 +7,8 @@ import styles from "../pages/index.module.scss"
 class IndexTemplate extends BaseTemplate {
 
   renderPosts(teasers, teaserImages) {
+    let isOdd = true
+
     return teasers.map((row, keyRow) => {
 
       const inlineStyles = {
@@ -15,7 +17,10 @@ class IndexTemplate extends BaseTemplate {
 
       return (
         <div key={keyRow} className={styles.row} style={inlineStyles}>
-          {row.cols.map((col, keyCol) => <Teaser key={keyCol} teaser={col} img={this.getImageSizes(col.thumbnail, teaserImages)} /> )}
+          {row.cols.map((col, keyCol) => {
+            isOdd = !isOdd
+            return <Teaser isOdd={isOdd} keyRow={keyRow} key={keyCol} teaser={col} img={this.getImageSizes(col.thumbnail, teaserImages)} />
+          })}
         </div>
       )
     })

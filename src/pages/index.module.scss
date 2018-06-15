@@ -1,4 +1,5 @@
 @import '../scss/variables';
+@import '../scss/breakpoints';
 
 figure {
   display: block;
@@ -22,17 +23,37 @@ figure {
       .col {
         padding-top: 0;
         padding-bottom: 0;
+
+        & > div {
+          width: auto;
+          float: none !important;
+        }
       }
     }
   }
 
   .row {
-    display: flex;
+
+    @include breakpoint('s') {
+      display: flex;
+      padding: $rowPadding / 2 0;
+    }
+
     justify-content: space-between;
     text-transform: uppercase;
-    margin-left: -$spaceBetween + $minPagePadding;
-    margin-right: -$spaceBetween + $minPagePadding;
-    padding: 50px 0;
+
+    @include breakpoint('m') {
+      padding-left: $rowPadding * 0.7;
+      padding-right: $rowPadding * 0.7;
+      margin-left: -$spaceBetween + $minPagePadding;
+      margin-right: -$spaceBetween + $minPagePadding;
+    }
+
+    @include breakpoint('l') {
+      padding-left: $rowPadding;
+      padding-right: $rowPadding;
+    }
+
     position: relative;
 
     h1, h2, p {
@@ -45,8 +66,48 @@ figure {
     }
 
     .col {
-      padding: 0 $spaceBetween;
+      padding: 0 $spaceBetween / 3;
+      padding-top: 40px;
       flex: 1;
+
+      @include breakpoint('m') {
+        padding-left: $spaceBetween * 0.7;
+        padding-right: $spaceBetween * 0.7;
+      }
+
+      @include breakpoint('l') {
+        padding-left: $spaceBetween;
+        padding-right: $spaceBetween;
+      }
+
+      & > div {
+        width: 65%;
+
+        &.even {
+          float: right;
+        }
+
+        &.odd {
+          float: left;
+        }
+
+        @include breakpoint('s') {
+          width: auto;
+          &.even {
+            float: none;
+          }
+
+          &.odd {
+            float: none;
+          }
+        }
+      }
+
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
     }
 
 
@@ -54,9 +115,11 @@ figure {
       justify-content: flex-end;
 
       .col {
-        @for $i from 2 through $maxCols {
-          &:nth-last-child(#{$i}) {
-            padding-top: ($i - 1) * $stepMargin;
+        @include breakpoint('s') {
+          @for $i from 2 through $maxCols {
+            &:nth-last-child(#{$i}) {
+              padding-top: ($i - 1) * $stepMargin;
+            }
           }
         }
       }
@@ -66,9 +129,11 @@ figure {
       justify-content: flex-start;
 
       .col {
-        @for $i from 2 through $maxCols {
-          &:nth-child(#{$i}) {
-            padding-top: ($i - 1) * $stepMargin;
+        @include breakpoint('s') {
+          @for $i from 2 through $maxCols {
+            &:nth-child(#{$i}) {
+              padding-top: ($i - 1) * $stepMargin;
+            }
           }
         }
       }
