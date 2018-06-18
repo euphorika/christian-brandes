@@ -14,6 +14,7 @@ class TeaserAnimation extends React.Component {
       offset: '5%'
     }
 
+    this.onPositionChange = this.onPositionChange.bind(this)
     this.onEnter = this.onEnter.bind(this)
     this.onLeave = this.onLeave.bind(this)
   }
@@ -26,11 +27,12 @@ class TeaserAnimation extends React.Component {
   }
 
   onLeave({ currentPosition }) {
-
     this.setState({
       teaserInside: false
     })
+  }
 
+  onPositionChange({ currentPosition }) {
     switch(currentPosition) {
       case Waypoint.above:
         this.setState({
@@ -58,7 +60,7 @@ class TeaserAnimation extends React.Component {
     const animationViewportClass = this.state.teaserInside ? styles.animationInside : styles.animationOutside
 
     return (
-      <Waypoint onEnter={this.onEnter} onLeave={this.onLeave} topOffset={this.state.offset} bottomOffset={this.state.offset}>
+      <Waypoint onEnter={this.onEnter} onLeave={this.onLeave} onPositionChange={this.onPositionChange} topOffset={this.state.offset} bottomOffset={this.state.offset}>
         <div className={styles.animate + ' ' + animationViewportClass + ' ' + animationClass}>
           {this.props.children}
         </div>
