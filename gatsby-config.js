@@ -9,37 +9,11 @@ module.exports = {
         ]
       }
     },{
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/posts`,
-        name: `posts`,
-      },
-    },{
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/category`,
-        name: `category`,
-      },
-    },{
         resolve: `gatsby-source-filesystem`,
         options: {
           path: `${__dirname}/static/assets`,
           name: `img`,
         }
-    },{
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1600,
-              quality: 90,
-              linkImagesToOriginal: false,
-            },
-          },
-        ],
-      },
     },{
     resolve: `gatsby-source-contentful`,
       options: {
@@ -50,6 +24,5 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-netlify-cms`,
   ]
 };
