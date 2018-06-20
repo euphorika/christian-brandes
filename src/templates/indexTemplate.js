@@ -6,20 +6,20 @@ import styles from "../pages/index.module.scss"
 
 class IndexTemplate extends BaseTemplate {
 
-  renderPosts(teasers, teaserImages) {
+  renderPosts(posts) {
     let isOdd = true
 
-    return teasers.map((row, keyRow) => {
+    return posts.map((row, keyRow) => {
 
       const inlineStyles = {
-        marginTop: row.marginTop
+        marginTop: row.marginTop ? marginTop: 0
       }
 
       return (
         <div key={keyRow} className={styles.row} style={inlineStyles}>
-          {row.cols.map((col, keyCol) => {
+          {row.teasers.map((col, keyCol) => {
             isOdd = !isOdd
-            return <Teaser isOdd={isOdd} keyRow={keyRow} key={keyCol} teaser={col} img={this.getImageSizes(col.thumbnail, teaserImages)} />
+            return <Teaser isOdd={isOdd} keyRow={keyRow} key={keyCol} teaser={col} img={col.featuredImage} />
           })}
         </div>
       )
@@ -27,8 +27,9 @@ class IndexTemplate extends BaseTemplate {
   }
 
   render() {
-    const { cmsGeneratedPosts, stickyImage, teaserImages } = this.props.data
-    const { sticky, teasers } = cmsGeneratedPosts
+    const { contentfulCategory } = this.props.data
+    const { sticky } = contentfulCategory
+    const { posts } = contentfulCategory
 
     return (
       <div>
@@ -37,11 +38,11 @@ class IndexTemplate extends BaseTemplate {
         </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
           <div className={styles.row}>
-            <Teaser teaser={sticky} img={stickyImage} />
+            <Teaser teaser={sticky} img={sticky.featuredImage} />
           </div>
         </div>
         <div className={styles.posts}>
-          {this.renderPosts(teasers, teaserImages)}
+          {this.renderPosts(posts)}
         </div>
       </div>
     );
@@ -52,48 +53,44 @@ class IndexTemplate extends BaseTemplate {
 export default IndexTemplate
 
 export const pageQuery = graphql`
-  query IndexByPath($thumbnail: String!, $teasers: String!) {
-    cmsGeneratedPosts {
+  query IndexByPath($slug: String!) {
+    contentfulCategory(slug:{eq: $slug}) {
       sticky {
         title
-        date
         location
-        meta_description
-        thumbnail
-        slug
-        root
-      }
-      teasers {
-        marginTop
-        cols {
-          title
-          location
-          date
-          meta_description
-          thumbnail
-          root
-          width
-          marginTop
-          paddingLeft
-          paddingRight
-          slug
-        }
-      }
-    }
-    stickyImage: imageSharp(id: { regex: $thumbnail }) {
-      sizes(maxWidth: 900) {
-        ...GatsbyImageSharpSizes
-      }
-    }
-    teaserImages: allImageSharp(filter: {id:{ regex: $teasers } } ) {
-      edges {
-        node {
-          id
-          sizes(maxWidth: 900) {
-            ...GatsbyImageSharpSizes
+        date
+        featuredImage {
+          sizes {
+            base64
+            tracedSVG
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
           }
         }
       }
-    }
+      posts {
+        teasers {
+          title
+          location
+          date
+          featuredImage {
+            sizes {
+              base64
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+          }
+        }
+      }
+   	}
   }
 `;

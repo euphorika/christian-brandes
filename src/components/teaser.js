@@ -10,13 +10,13 @@ class Teaser extends React.Component {
     const { teaser, img, isOdd } = this.props
 
     const inlineStyles = {
-      marginTop: teaser.marginTop,
-      flex: teaser.width
+      marginTop: teaser.marginTop ? teaser.marginTop : 0,
+      flex: teaser.width ? teaser.width : 1
     }
 
     const indentStyles = {
-      paddingLeft: teaser.paddingLeft,
-      paddingRight: teaser.paddingRight
+      paddingLeft: teaser.paddingLeft ? teaser.paddingLeft : 0,
+      paddingRight: teaser.paddingRight ? teaser.paddingRight : 0
     }
 
     let oddOrEven = ''

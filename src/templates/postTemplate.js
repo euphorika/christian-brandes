@@ -90,8 +90,6 @@ export const pageQuery = graphql`
         title
         meta_description
         location
-        width
-        marginTop
         row {
           verticalPosition
           rowImages {
