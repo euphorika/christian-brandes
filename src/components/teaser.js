@@ -7,16 +7,16 @@ import styles from "../pages/index.module.scss"
 class Teaser extends React.Component {
 
   render() {
-    const { teaser, img, isOdd } = this.props
+    const { col, isOdd } = this.props
 
     const inlineStyles = {
-      marginTop: teaser.marginTop,
-      flex: teaser.width
+      marginTop: col.marginTop ? col.marginTop : 0,
+      flex: col.width ? col.width / 100 : 1
     }
 
     const indentStyles = {
-      paddingLeft: teaser.paddingLeft,
-      paddingRight: teaser.paddingRight
+      paddingLeft: col.paddingLeft ? col.paddingLeft : 0,
+      paddingRight: col.paddingRight ? col.paddingRight : 0
     }
 
     let oddOrEven = ''
@@ -29,8 +29,8 @@ class Teaser extends React.Component {
       <div className={styles.col} style={inlineStyles}>
         <div className={oddOrEven} style={indentStyles}>
           <TeaserAnimation>
-            <Link to={teaser.slug}>
-              <Figure teaser={teaser} img={img} />
+            <Link to={col.teaser.slug}>
+              <Figure teaser={col.teaser} />
             </Link>
           </TeaserAnimation>
         </div>

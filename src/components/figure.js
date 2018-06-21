@@ -5,12 +5,12 @@ class Figure extends React.Component {
 
   render() {
 
-    const { teaser, img } = this.props
+    const { teaser } = this.props
     const date = new Date(teaser.date)
 
     return (
       <figure>
-        <Img sizes={img.sizes} />
+        <Img sizes={teaser.featuredImage.sizes} />
         <figcaption>
           <h2>{teaser.title}</h2>
           <p>{teaser.location},&nbsp;{date.toLocaleString('en-us', { month: 'long' })}&nbsp;{date.getFullYear()}</p>
