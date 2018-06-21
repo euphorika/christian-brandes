@@ -27,6 +27,15 @@ module.exports = {
         accessToken,
         host
       },
+    },{
+      resolve: 'gatsby-plugin-robots-txt',
+      options: process.env.CONTEXT === 'production'
+        ? { policy: [{ userAgent: '*' }] }
+        : {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          }
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
