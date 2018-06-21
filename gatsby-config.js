@@ -35,7 +35,10 @@ module.exports = {
     },{
       resolve: 'gatsby-plugin-robots-txt',
       options: process.env.CONTEXT === 'production'
-        ? { policy: [{ userAgent: '*' }] }
+        ? {
+            policy: [{ userAgent: '*' }],
+            sitemap: null
+          }
         : {
             policy: [{ userAgent: '*', disallow: ['/'] }],
             sitemap: null,
