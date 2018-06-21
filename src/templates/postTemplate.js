@@ -1,11 +1,10 @@
 import React from "react"
 import Helmet from "react-helmet"
-import BaseTemplate from "./baseTemplate";
 import Img from "gatsby-image"
 import TeaserAnimation from "../components/teaserAnimation"
 import styles from "../pages/index.module.scss"
 
-class PostTemplate extends BaseTemplate {
+class PostTemplate extends React.Component {
 
   renderImages(postImages) {
     if (!postImages) {

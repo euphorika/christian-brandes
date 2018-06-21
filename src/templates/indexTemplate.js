@@ -1,10 +1,9 @@
 import React from "react"
 import Helmet from "react-helmet"
-import BaseTemplate from "./baseTemplate"
 import Teaser from "../components/teaser"
 import styles from "../pages/index.module.scss"
 
-class IndexTemplate extends BaseTemplate {
+class IndexTemplate extends React.Component {
 
   renderPosts(posts) {
     let isOdd = true
