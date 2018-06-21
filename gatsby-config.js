@@ -1,5 +1,9 @@
 require('dotenv').config()
 
+const spaceId = process.env.CONTENTFUL_SPACE_ID || ''
+const accessToken = process.env.CONTEXT === 'production' ? process.env.CONTENTFUL_ACCESS_TOKEN : process.env.CONTENTFUL_PREVIEW_TOKEN
+const host = process.env.CONTEXT === 'production' ? 'cdn.contentful.com': 'preview.contentful.com'
+
 module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
@@ -19,8 +23,9 @@ module.exports = {
     },{
     resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID || '',
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
+        spaceId,
+        accessToken,
+        host
       },
     },
     `gatsby-plugin-react-helmet`,
