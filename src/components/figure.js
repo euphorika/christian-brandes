@@ -10,7 +10,7 @@ class Figure extends React.Component {
 
     return (
       <figure>
-        <Img sizes={teaser.featuredImage.sizes} />
+        <Img sizes={teaser.featuredImage.sizes} alt={teaser.featuredImage.title} />
         <figcaption>
           <h2>{teaser.title}</h2>
           <p>{teaser.location},&nbsp;{date.toLocaleString('en-us', { month: 'long' })}&nbsp;{date.getFullYear()}</p>
