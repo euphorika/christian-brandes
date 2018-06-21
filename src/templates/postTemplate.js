@@ -87,14 +87,7 @@ export const pageQuery = graphql`
       featuredImage {
         title
         sizes {
-          base64
-          tracedSVG
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
+          ...GatsbyContentfulSizes_withWebp_noBase64
         }
       }
       postRow {
@@ -103,14 +96,7 @@ export const pageQuery = graphql`
           asset {
             title
             sizes {
-              base64
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
+              ...GatsbyContentfulSizes_withWebp_noBase64
             }
           }
         }

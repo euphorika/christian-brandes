@@ -65,14 +65,7 @@ export const pageQuery = graphql`
         featuredImage {
           title
           sizes {
-            base64
-            tracedSVG
-            aspectRatio
-            src
-            srcSet
-            srcWebp
-            srcSetWebp
-            sizes
+            ...GatsbyContentfulSizes_withWebp_noBase64
           }
         }
       }
@@ -87,14 +80,7 @@ export const pageQuery = graphql`
             featuredImage {
               title
               sizes {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
+                ...GatsbyContentfulSizes_withWebp_noBase64
               }
             }
           }
