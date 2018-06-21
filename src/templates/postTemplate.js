@@ -39,7 +39,7 @@ class PostTemplate extends React.Component {
               <div key={keyCol} className={styles.col} style={inlineStyles}>
                 <div className={isOdd ? styles.odd : styles.even} style={indentStyles}>
                   <TeaserAnimation>
-                    <Img sizes={col.asset.sizes} />
+                    <Img sizes={col.asset.sizes} alt={col.asset.title} />
                   </TeaserAnimation>
                 </div>
               </div>
@@ -85,15 +85,9 @@ export const pageQuery = graphql`
       title
       metaDescription
       featuredImage {
+        title
         sizes {
-          base64
-          tracedSVG
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
+          ...GatsbyContentfulSizes_withWebp_noBase64
         }
       }
       postRow {
@@ -102,14 +96,7 @@ export const pageQuery = graphql`
           asset {
             title
             sizes {
-              base64
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
+              ...GatsbyContentfulSizes_withWebp_noBase64
             }
           }
         }

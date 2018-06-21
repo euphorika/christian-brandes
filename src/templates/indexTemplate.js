@@ -27,8 +27,7 @@ class IndexTemplate extends React.Component {
 
   render() {
     const { contentfulCategory } = this.props.data
-    const { sticky } = contentfulCategory
-    const { posts } = contentfulCategory
+    const { sticky, posts } = contentfulCategory
 
     const stickyTeaser = {
       teaser: sticky
@@ -64,15 +63,9 @@ export const pageQuery = graphql`
         location
         date
         featuredImage {
+          title
           sizes {
-            base64
-            tracedSVG
-            aspectRatio
-            src
-            srcSet
-            srcWebp
-            srcSetWebp
-            sizes
+            ...GatsbyContentfulSizes_withWebp_noBase64
           }
         }
       }
@@ -85,15 +78,9 @@ export const pageQuery = graphql`
             location
             date
             featuredImage {
+              title
               sizes {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
+                ...GatsbyContentfulSizes_withWebp_noBase64
               }
             }
           }
