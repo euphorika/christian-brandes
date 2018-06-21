@@ -71,13 +71,32 @@ export const pageQuery = graphql`
       }
       posts {
         teasers {
-          width
-          teaser {
+          __typename
+          ... on ContentfulCategoryTeaser {
+            width
+            verticalPosition
+            indentLeft
+            indentRight
+            teaser {
+              title
+              slug
+              location
+              date
+              featuredImage {
+                title
+                sizes {
+                  ...GatsbyContentfulSizes_withWebp_noBase64
+                }
+              }
+            }
+          }
+          ... on ContentfulDeadCategoryTeaser {
             title
-            slug
-            location
-            date
-            featuredImage {
+            width
+            verticalPosition
+            indentLeft
+            indentRight
+            asset {
               title
               sizes {
                 ...GatsbyContentfulSizes_withWebp_noBase64

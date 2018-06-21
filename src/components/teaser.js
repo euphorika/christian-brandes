@@ -1,10 +1,37 @@
 import React from "react"
 import Link from "gatsby-link"
+import Img from "gatsby-image"
 import Figure from "./figure"
 import TeaserAnimation from "../components/teaserAnimation"
 import styles from "../pages/index.module.scss"
 
 class Teaser extends React.Component {
+
+  renderTeaser(teaser, inlineStyles, indentStyles, oddOrEven) {
+    return (
+      <div className={styles.col} style={inlineStyles}>
+        <div className={oddOrEven} style={indentStyles}>
+          <TeaserAnimation>
+            <Link to={teaser.slug}>
+              <Figure teaser={teaser} />
+            </Link>
+          </TeaserAnimation>
+        </div>
+      </div>
+    )
+  }
+
+  renderDeadTeaser(teaser, inlineStyles, indentStyles, oddOrEven) {
+    return (
+      <div className={styles.col} style={inlineStyles}>
+        <div className={oddOrEven} style={indentStyles}>
+          <TeaserAnimation>
+            <Img sizes={teaser.asset.sizes} alt={teaser.asset.title} />
+          </TeaserAnimation>
+        </div>
+      </div>
+    )
+  }
 
   render() {
     const { col, isOdd } = this.props
@@ -25,17 +52,11 @@ class Teaser extends React.Component {
       oddOrEven = isOdd ? styles.odd : styles.even
     }
 
-    return (
-      <div className={styles.col} style={inlineStyles}>
-        <div className={oddOrEven} style={indentStyles}>
-          <TeaserAnimation>
-            <Link to={col.teaser.slug}>
-              <Figure teaser={col.teaser} />
-            </Link>
-          </TeaserAnimation>
-        </div>
-      </div>
-    )
+    if (col.__typename === 'ContentfulDeadCategoryTeaser') {
+      return this.renderDeadTeaser(col, inlineStyles, indentStyles, oddOrEven)
+    }
+
+    return this.renderTeaser(col.teaser, inlineStyles, indentStyles, oddOrEven)
   }
 
 }

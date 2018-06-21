@@ -64,7 +64,7 @@ class PostTemplate extends React.Component {
           <div className={styles.row}>
             <div className={styles.col}>
               <TeaserAnimation>
-                <Img sizes={contentfulPost.featuredImage.sizes} />
+                <Img sizes={contentfulPost.featuredImage.sizes} alt={contentfulPost.featuredImage.title} />
               </TeaserAnimation>
             </div>
           </div>
@@ -93,6 +93,9 @@ export const pageQuery = graphql`
       postRow {
         postAsset {
           width
+          verticalPosition
+          indentLeft
+          indentRight
           asset {
             title
             sizes {
