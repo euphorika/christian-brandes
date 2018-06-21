@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
@@ -17,8 +19,8 @@ module.exports = {
     },{
     resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `vjfa4ov0wqx1`,
-        accessToken: `91e716a8a31b8b397a4cf258ee021d98537a9c784b6d691b2c46d0f1ba7fe7b9`,
+        spaceId: process.env.CONTENTFUL_SPACE_ID || '',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
       },
     },
     `gatsby-plugin-react-helmet`,
