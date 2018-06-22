@@ -67,12 +67,21 @@ export const pageQuery = graphql`
           sizes {
             ...GatsbyContentfulSizes_withWebp_noBase64
           }
+          file {
+            contentType
+            url
+          }
+        }
+        videoFallback {
+          sizes {
+            src
+          }
         }
       }
       posts {
         teasers {
           __typename
-          ...on ContentfulCategoryTeaser {
+          ... on ContentfulCategoryTeaser {
             width
             verticalPosition
             indentLeft
@@ -87,10 +96,14 @@ export const pageQuery = graphql`
                 sizes {
                   ...GatsbyContentfulSizes_withWebp_noBase64
                 }
+                file {
+                  contentType
+                  url
+                }
               }
             }
           }
-          ...on ContentfulDeadCategoryTeaser {
+          ... on ContentfulDeadCategoryTeaser {
             title
             width
             verticalPosition
@@ -100,6 +113,10 @@ export const pageQuery = graphql`
               title
               sizes {
                 ...GatsbyContentfulSizes_withWebp_noBase64
+              }
+              file {
+                contentType
+                url
               }
             }
           }
