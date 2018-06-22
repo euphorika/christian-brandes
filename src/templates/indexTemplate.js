@@ -67,6 +67,15 @@ export const pageQuery = graphql`
           sizes {
             ...GatsbyContentfulSizes_withWebp_noBase64
           }
+          file {
+            contentType
+            url
+          }
+        }
+        videoFallback {
+          sizes {
+            src
+          }
         }
       }
       posts {
@@ -87,6 +96,10 @@ export const pageQuery = graphql`
                 sizes {
                   ...GatsbyContentfulSizes_withWebp_noBase64
                 }
+                file {
+                  contentType
+                  url
+                }
               }
             }
           }
@@ -100,6 +113,10 @@ export const pageQuery = graphql`
               title
               sizes {
                 ...GatsbyContentfulSizes_withWebp_noBase64
+              }
+              file {
+                contentType
+                url
               }
             }
           }
