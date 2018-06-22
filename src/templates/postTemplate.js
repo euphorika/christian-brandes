@@ -74,6 +74,15 @@ class PostTemplate extends React.Component {
         <Helmet>
           <title>{contentfulPost.title}</title>
           <meta name="description" content={contentfulPost.metaDescription} />
+          <style type="text/css">{`
+            #header svg {
+              fill: ${contentfulPost.color}
+            }
+            #footer,
+            #footer a {
+              color: ${contentfulPost.color}
+            }
+          `}</style>
         </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
           <div className={styles.row}>
@@ -99,6 +108,7 @@ export const pageQuery = graphql`
     contentfulPost(slug: { eq: $slug }) {
       title
       metaDescription
+      color
       featuredImage {
         title
         sizes {
