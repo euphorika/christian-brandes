@@ -13,7 +13,7 @@ class PostTemplate extends React.Component {
 
     return (
       <div className={styles.videoContainer}>
-        <video playsinline autoplay loop mute>
+        <video playsInline autoPlay loop muted>
           <source src={asset.file.url} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -107,6 +107,11 @@ export const pageQuery = graphql`
         file {
           contentType
           url
+        }
+      }
+      videoFallback {
+        sizes {
+          src
         }
       }
       postRow {
