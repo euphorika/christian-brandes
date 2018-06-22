@@ -72,7 +72,7 @@ export const pageQuery = graphql`
       posts {
         teasers {
           __typename
-          ...on ContentfulCategoryTeaser {
+          ... on ContentfulCategoryTeaser {
             width
             verticalPosition
             indentLeft
@@ -90,7 +90,7 @@ export const pageQuery = graphql`
               }
             }
           }
-          ...on ContentfulDeadCategoryTeaser {
+          ... on ContentfulDeadCategoryTeaser {
             title
             width
             verticalPosition

@@ -6,6 +6,21 @@ import styles from "../pages/index.module.scss"
 
 class PostTemplate extends React.Component {
 
+  renderMedia(asset) {
+    if (!asset.file.contentType.startsWith('video')) {
+      return   <Img sizes={asset.sizes} alt={asset.title} />
+    }
+
+    return (
+      <div className={styles.videoContainer}>
+        <video autoPlay loop>
+          <source src={asset.file.url} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    )
+  }
+
   renderImages(postImages) {
     if (!postImages) {
       return
@@ -39,7 +54,7 @@ class PostTemplate extends React.Component {
               <div key={keyCol} className={styles.col} style={inlineStyles}>
                 <div className={isOdd ? styles.odd : styles.even} style={indentStyles}>
                   <TeaserAnimation>
-                    <Img sizes={col.asset.sizes} alt={col.asset.title} />
+                    {this.renderMedia(col.asset)}
                   </TeaserAnimation>
                 </div>
               </div>
@@ -64,7 +79,7 @@ class PostTemplate extends React.Component {
           <div className={styles.row}>
             <div className={styles.col}>
               <TeaserAnimation>
-                <Img sizes={contentfulPost.featuredImage.sizes} alt={contentfulPost.featuredImage.title} />
+                {this.renderMedia(contentfulPost.featuredImage)}
               </TeaserAnimation>
             </div>
           </div>
@@ -89,6 +104,10 @@ export const pageQuery = graphql`
         sizes {
           ...GatsbyContentfulSizes_withWebp_noBase64
         }
+        file {
+          contentType
+          url
+        }
       }
       postRow {
         postAsset {
@@ -100,6 +119,10 @@ export const pageQuery = graphql`
             title
             sizes {
               ...GatsbyContentfulSizes_withWebp_noBase64
+            }
+            file {
+              contentType
+              url
             }
           }
         }
