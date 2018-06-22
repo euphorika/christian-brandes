@@ -20,12 +20,6 @@ module.exports = {
         ]
       }
     },{
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          path: `${__dirname}/static/assets`,
-          name: `img`,
-        }
-    },{
     resolve: `gatsby-source-contentful`,
       options: {
         spaceId,
