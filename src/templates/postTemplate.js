@@ -13,7 +13,7 @@ class PostTemplate extends React.Component {
 
     return (
       <div className={styles.videoContainer}>
-        <video autoPlay loop mute>
+        <video playsinline autoplay loop mute>
           <source src={asset.file.url} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
