@@ -6,14 +6,14 @@ import styles from "../pages/index.module.scss"
 
 class PostTemplate extends React.Component {
 
-  renderMedia(asset) {
+  renderMedia(asset, poster) {
     if (!asset.file.contentType.startsWith('video')) {
-      return   <Img sizes={asset.sizes} alt={asset.title} />
+      return <Img sizes={asset.sizes} alt={asset.title} />
     }
 
     return (
       <div className={styles.videoContainer}>
-        <video playsInline autoPlay loop muted>
+        <video poster={poster ? poster.sizes.src : null} playsInline autoPlay loop muted>
           <source src={asset.file.url} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -54,7 +54,7 @@ class PostTemplate extends React.Component {
               <div key={keyCol} className={styles.col} style={inlineStyles}>
                 <div className={isOdd ? styles.odd : styles.even} style={indentStyles}>
                   <TeaserAnimation>
-                    {this.renderMedia(col.asset)}
+                    {this.renderMedia(col.asset, col.videoFallback)}
                   </TeaserAnimation>
                 </div>
               </div>
@@ -79,7 +79,7 @@ class PostTemplate extends React.Component {
           <div className={styles.row}>
             <div className={styles.col}>
               <TeaserAnimation>
-                {this.renderMedia(contentfulPost.featuredImage)}
+                {this.renderMedia(contentfulPost.featuredImage, contentfulPost.videoFallback)}
               </TeaserAnimation>
             </div>
           </div>
