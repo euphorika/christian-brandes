@@ -1,0 +1,15 @@
+@import '../scss/variables';
+
+.page404 {
+  max-width: $maxPageWidth;
+  margin: 0 auto;
+  padding: 50px 100px;
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
