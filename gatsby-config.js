@@ -39,6 +39,7 @@ module.exports = {
             host: null
           }
     },
+    `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
