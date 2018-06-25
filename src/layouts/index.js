@@ -11,6 +11,7 @@ export default ({ children }) => (
     <Helmet defaultTitle={`Christian Brandes - Photograph`} titleTemplate={`%s | Christian Brandes - Photograph`}>
       <meta charSet="utf-8" />
       <meta name="description" content="Christian Brandes - Photograph based in Hamburg" />
+      <link rel="icon" type="image/png" href="favicon.png" />
     </Helmet>
     <header id="header" className={styles.header}>
       <div className={styles.logoContainer}>
