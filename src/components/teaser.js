@@ -41,11 +41,13 @@ class Teaser extends React.Component {
   }
 
   renderDeadTeaser(teaser, inlineStyles, indentStyles, oddOrEven) {
+    teaser.featuredImage = teaser.asset // awful
+
     return (
       <div className={styles.col} style={inlineStyles}>
         <div className={oddOrEven} style={indentStyles}>
           <TeaserAnimation>
-            <Img sizes={teaser.asset.sizes} alt={teaser.asset.title} />
+            {this.renderMedia(teaser)}
           </TeaserAnimation>
         </div>
       </div>
