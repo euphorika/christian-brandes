@@ -11,7 +11,7 @@ export default ({ data, transition }) => (
     </Helmet>
     <Lightbox visible={true}>
       <div className={styles.about}>
-        <h1>Christian Brandes</h1>
+        <h1>{data.contentfulSettings.name}</h1>
         <h2>Visual Storytelling</h2>
         <div className={styles.bio} dangerouslySetInnerHTML={{__html: data.contentfulPage.textBlocks[0].body.childMarkdownRemark.html }} />
         <div className={styles.claim} dangerouslySetInnerHTML={{__html: data.contentfulPage.textBlocks[1].body.childMarkdownRemark.html }} />
@@ -19,20 +19,18 @@ export default ({ data, transition }) => (
           <div className={styles.contactItem}>
             <div className={styles.label}>Office</div>
             <div className={styles.value}>
-              Eppendorfer Weg 87a<br />
-              20259 Hamburg
+              {data.contentfulSettings.street}<br />
+              {data.contentfulSettings.city}
             </div>
           </div>
           <div className={styles.contactItem}>
             <div className={styles.label}>Email</div>
-            <div className={styles.value}>
-              kontakt[at]christianbrandes.de
-            </div>
+            <div className={styles.value}>{data.contentfulSettings.mail}</div>
           </div>
           <div className={styles.contactItem}>
             <div className={styles.label}>Cell</div>
             <div className={styles.value}>
-              <a href="tel:+4917641250470">+49(0)176 41250470</a>
+              <a href={"tel:" + data.contentfulSettings.phone}>{data.contentfulSettings.phoneText}</a>
             </div>
           </div>
         </div>
@@ -55,6 +53,14 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    contentfulSettings {
+      name
+      street
+      city
+      mail
+      phone
+      phoneText
     }
   }
 `

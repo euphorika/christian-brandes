@@ -10,20 +10,20 @@ export default ({ data, transition }) => (
     </Helmet>
     <Lightbox visible={true}>
       <div>
-        <h2>Christian Brandes</h2>
+        <h2>{data.contentfulSettings.name}</h2>
         <div>Office:</div>
         <div>
-          Eppendorfer Weg 87a<br />
-          20259 Hamburg
+          {data.contentfulSettings.street}<br />
+          {data.contentfulSettings.city}
         </div>
         <div>Email:</div>
-        <div>kontakt[at]christianbrandes.de</div>
+        <div>{data.contentfulSettings.mail}</div>
         <div>Cell:</div>
         <div>
-          <a href="tel:+4917641250470">+49(0)176 41250470</a>
+          <a href={"tel:" + data.contentfulSettings.phone}>{data.contentfulSettings.phoneText}</a>
         </div>
         <div>UStId:</div>
-        <div>DE281648859</div>
+        <div>{data.contentfulSettings.vatId}</div>
         <div dangerouslySetInnerHTML={{__html: data.contentfulPage.textBlocks[0].body.childMarkdownRemark.html }} />
       </div>
       <div>
@@ -50,6 +50,15 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    contentfulSettings {
+      name
+      street
+      city
+      mail
+      phone
+      phoneText
+      vatId
     }
   }
 `
