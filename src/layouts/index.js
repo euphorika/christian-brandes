@@ -14,14 +14,18 @@ export default ({ children }) => (
       <link rel="icon" type="image/png" href="favicon.png" />
     </Helmet>
     <header id="header" className={styles.header}>
-      <Link className={styles.logo} to="/">
-        <Logo />
-      </Link>
-      <Link to="/about">
-        <nav role="navigation" className={styles.navigation}>
-          <IconNavigation />
-        </nav>
-      </Link>
+      <div className={styles.logoContainer}>
+        <Link className={styles.logo} to="/">
+          <Logo />
+        </Link>
+      </div>
+      <div className={styles.navigationContainer}>
+        <Link to="/about">
+          <nav role="navigation" className={styles.navigation}>
+            <IconNavigation />
+          </nav>
+        </Link>
+      </div>
     </header>
     <main id="main" className={styles.content}>
       {children()}

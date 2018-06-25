@@ -38,31 +38,47 @@ ul, li {
   .header {
     position: relative;
 
-    .logo {
+    .logoContainer {
       position: absolute;
-      top: 0;
       left: $minPagePadding;
-      width: $logoWidth * 0.7;
 
-      @include breakpoint('s') {
-        width: $logoWidth;
-      }
+      .logo {
+        position: fixed;
+        z-index: 100;
+        width: $logoWidth * 0.7;
 
-      svg {
-        width: 100%;
+        @include breakpoint('s') {
+          width: $logoWidth;
+        }
+
+        svg {
+          width: 100%;
+        }
       }
     }
 
-    .navigation {
+    .navigationContainer {
       position: absolute;
       right: $minPagePadding;
-      top: 0;
       width: $iconWidth * 0.7;
       height: $iconHeight * 0.7;
 
       @include breakpoint('s') {
         width: $iconWidth;
         height: $iconHeight;
+      }
+
+      .navigation {
+        position: fixed;
+        z-index: 100;
+        width: $iconWidth * 0.7;
+        height: $iconHeight * 0.7;
+
+        @include breakpoint('s') {
+          width: $iconWidth;
+          height: $iconHeight;
+        }
+
       }
     }
   }
