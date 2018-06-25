@@ -43,5 +43,19 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Christian Brandes - Photograph Based in Hamburg",
+        short_name: "Christian Brandes",
+        start_url: "/",
+        background_color: "#ffffff",
+        theme_color: "#000000",
+        display: "minimal-ui",
+        icon: "src/images/icon.png",
+      },
+    },
+    `gatsby-plugin-offline`,
+
   ]
 };
