@@ -2,6 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import Img from "gatsby-image"
 import TeaserAnimation from "../components/teaserAnimation"
+import PostAsset from "../components/postAsset"
 import styles from "../pages/index.module.scss"
 
 class PostTemplate extends React.Component {
@@ -34,34 +35,26 @@ class PostTemplate extends React.Component {
         marginTop: row.verticalPosition ? row.verticalPosition : 0
       }
 
-      return (
-        <div key={keyRow} className={styles.row} style={inlineStyles}>
-          {row.postAsset.map((col, keyCol) => {
+      switch(row.__typename)  {
 
-            const inlineStyles = {
-              flex: col.width ? col.width / 100 : row.postAsset.length === 1 ? 0.7 : 1,
-              marginTop: col.verticalPosition ? col.verticalPosition : '0',
-            }
+        case 'ContentfulPostRow':
+          return (
+            <div key={keyRow} className={styles.row} style={inlineStyles}>
+              {row.postAsset.map((col, keyCol) => {
+                isOdd = !isOdd
+                return <PostAsset key={keyCol} post={col} odd={isOdd} />
+              })}
+            </div>
+          )
 
-            const indentStyles = {
-              paddingLeft: col.indentLeft ? col.indentLeft : 0,
-              paddingRight: col.indentRight ? col.indentRight : 0
-            }
-
-            isOdd = !isOdd
-
-            return (
-              <div key={keyCol} className={styles.col} style={inlineStyles}>
-                <div className={isOdd ? styles.odd : styles.even} style={indentStyles}>
-                  <TeaserAnimation>
-                    {this.renderMedia(col.asset, col.videoFallback)}
-                  </TeaserAnimation>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      )
+        case 'ContentfulPostAsset':
+          isOdd = !isOdd
+          return (
+            <div key={keyRow} className={styles.row} style={inlineStyles}>
+              <PostAsset post={row} odd={isOdd} nrCols={1} />
+            </div>
+          )
+      }
     })
   }
 
@@ -125,21 +118,27 @@ export const pageQuery = graphql`
         }
       }
       postRow {
-        postAsset {
-          width
-          verticalPosition
-          indentLeft
-          indentRight
-          asset {
-            title
-            sizes {
-              ...GatsbyContentfulSizes_withWebp
-            }
-            file {
-              contentType
-              url
+        __typename
+        ... on ContentfulPostRow {
+          postAsset {
+            width
+            verticalPosition
+            indentLeft
+            indentRight
+            asset {
+              title
+              sizes {
+                ...GatsbyContentfulSizes_withWebp
+              }
+              file {
+                contentType
+                url
+              }
             }
           }
+        }
+        ... on ContentfulPostAsset {
+          ...PostAsset
         }
       }
     }
