@@ -39,7 +39,7 @@ class PostTemplate extends React.Component {
           {row.postAsset.map((col, keyCol) => {
 
             const inlineStyles = {
-              flex: col.width ? col.width / 100 : 1,
+              flex: col.width ? col.width / 100 : row.postAsset.length === 1 ? 0.7 : 1,
               marginTop: col.verticalPosition ? col.verticalPosition : '0',
             }
 
