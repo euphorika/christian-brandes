@@ -59,7 +59,7 @@ class Teaser extends React.Component {
 
     const inlineStyles = {
       marginTop: col.marginTop ? col.marginTop : 0,
-      flex: col.width ? col.width / 100 : 1
+      flex: col.width ? col.width / 100 : col.nrCols === 1 ? 0.7 : 1
     }
 
     const indentStyles = {
