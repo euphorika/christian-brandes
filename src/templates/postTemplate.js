@@ -1,26 +1,51 @@
 import React from "react"
 import Helmet from "react-helmet"
-import Img from "gatsby-image"
-import TeaserAnimation from "../components/teaserAnimation"
 import PostAsset from "../components/postAsset"
 import PostVideoAsset from "../components/postVideoAsset"
 import styles from "../pages/index.module.scss"
 
 class PostTemplate extends React.Component {
 
-  renderMedia(asset, poster) {
-    if (!asset.file.contentType.startsWith('video')) {
-      return <Img sizes={asset.sizes} alt={asset.title} />
+  renderRow(row, key = 'teaser', isOdd = {}) {
+    const inlineStyles = {
+      marginTop: row.verticalPosition ? row.verticalPosition : 0
     }
 
-    return (
-      <div className={styles.videoContainer}>
-        <video poster={poster ? poster.sizes.src : null} playsInline autoPlay loop muted>
-          <source src={asset.file.url} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    )
+    switch(row.__typename)  {
+
+      case 'ContentfulPostRow':
+        return (
+          <div key={key} className={styles.row} style={inlineStyles}>
+            {row.postAsset.map((col, keyCol) => {
+              isOdd.value = !isOdd.value
+
+              if (col.__typename === 'ContentfulPostAsset') {
+                return <PostAsset key={keyCol} post={col} odd={isOdd.value} nrCols={row.postAsset.length} />
+              }
+
+              if (col.__typename === 'ContentfulPostVideo') {
+                return <PostVideoAsset key={keyCol} post={col} odd={isOdd.value} nrCols={row.postAsset.length} />
+              }
+            })}
+          </div>
+        )
+
+      case 'ContentfulPostAsset':
+        isOdd.value = !isOdd.value
+        return (
+          <div key={key} className={styles.row} style={inlineStyles}>
+            <PostAsset post={row} odd={isOdd.value} nrCols={1} />
+          </div>
+        )
+
+      case 'ContentfulPostVideo':
+        isOdd.value = !isOdd.value
+        return (
+          <div key={key} className={styles.row} style={inlineStyles}>
+            <PostVideoAsset post={row} odd={isOdd.value} nrCols={1} />
+          </div>
+        )
+    }
   }
 
   renderImages(postImages) {
@@ -28,55 +53,19 @@ class PostTemplate extends React.Component {
       return
     }
 
-    let isOdd = true
+    let isOdd = {
+      value: true
+    }
 
-    return postImages.map((row, keyRow) => {
-
-      const inlineStyles = {
-        marginTop: row.verticalPosition ? row.verticalPosition : 0
-      }
-
-      switch(row.__typename)  {
-
-        case 'ContentfulPostRow':
-          return (
-            <div key={keyRow} className={styles.row} style={inlineStyles}>
-              {row.postAsset.map((col, keyCol) => {
-                isOdd = !isOdd
-
-                if (col.__typename === 'ContentfulPostAsset') {
-                  return <PostAsset key={keyCol} post={col} odd={isOdd} nrCols={row.postAsset.length} />
-                }
-
-                if (col.__typename === 'ContentfulPostVideo') {
-                  return <PostVideoAsset post={col} odd={isOdd} nrCols={row.postAsset.length} />
-                }
-              })}
-            </div>
-          )
-
-        case 'ContentfulPostAsset':
-          isOdd = !isOdd
-          return (
-            <div key={keyRow} className={styles.row} style={inlineStyles}>
-              <PostAsset post={row} odd={isOdd} nrCols={1} />
-            </div>
-          )
-
-        case 'ContentfulPostVideo':
-          isOdd = !isOdd
-          return (
-            <div key={keyRow} className={styles.row} style={inlineStyles}>
-              <PostVideoAsset post={row} odd={isOdd} nrCols={1} />
-            </div>
-          )
-      }
-    })
+    return postImages.map((row, keyRow) => this.renderRow(row, keyRow, isOdd))
   }
 
   render() {
     const { contentfulPost } = this.props.data
     const { postRow } = contentfulPost
+
+    const teaser = postRow ? postRow[0] : []
+    const rows = postRow ? postRow.slice(1) : []
 
     return (
       <div className={styles.singlePost}>
@@ -94,16 +83,10 @@ class PostTemplate extends React.Component {
           `}</style>
         </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <TeaserAnimation>
-                {this.renderMedia(contentfulPost.featuredImage, contentfulPost.videoFallback)}
-              </TeaserAnimation>
-            </div>
-          </div>
+          {this.renderRow(teaser)}
         </div>
         <div className={styles.posts}>
-          {this.renderImages(postRow)}
+          {this.renderImages(rows)}
         </div>
       </div>
     )
