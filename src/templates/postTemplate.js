@@ -3,6 +3,7 @@ import Helmet from "react-helmet"
 import Img from "gatsby-image"
 import TeaserAnimation from "../components/teaserAnimation"
 import PostAsset from "../components/postAsset"
+import PostVideoAsset from "../components/postVideoAsset"
 import styles from "../pages/index.module.scss"
 
 class PostTemplate extends React.Component {
@@ -52,6 +53,14 @@ class PostTemplate extends React.Component {
           return (
             <div key={keyRow} className={styles.row} style={inlineStyles}>
               <PostAsset post={row} odd={isOdd} nrCols={1} />
+            </div>
+          )
+
+        case 'ContentfulPostVideo':
+          isOdd = !isOdd
+          return (
+            <div key={keyRow} className={styles.row} style={inlineStyles}>
+              <PostVideoAsset post={row} odd={isOdd} nrCols={1} />
             </div>
           )
       }
@@ -139,6 +148,9 @@ export const pageQuery = graphql`
         }
         ... on ContentfulPostAsset {
           ...PostAsset
+        }
+        ... on ContentfulPostVideo {
+          ...PostVideoAsset
         }
       }
     }

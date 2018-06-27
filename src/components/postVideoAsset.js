@@ -1,9 +1,7 @@
-import React from 'react'
-import Img from "gatsby-image"
-import TeaserAnimation from "../components/teaserAnimation"
+import React from "react"
 import styles from "../pages/index.module.scss"
 
-class PostAsset extends React.Component {
+class PostVideoAsset extends React.Component {
 
   render() {
     const { post, isOdd, nrCols } = this.props
@@ -18,30 +16,38 @@ class PostAsset extends React.Component {
       paddingRight: post.indentRight ? post.indentRight : 0
     }
 
-    return (
+    return(
       <div className={styles.col} style={inlineStyles}>
         <div className={isOdd ? styles.odd : styles.even} style={indentStyles}>
-          <TeaserAnimation>
-            <Img sizes={post.asset.sizes} alt={post.asset.title} />
-          </TeaserAnimation>
+          <div className={styles.videoContainer}>
+            <video poster={post.poster ? post.poster.sizes.src : null} playsInline autoPlay loop muted>
+              <source src={post.asset.file.url} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </div>
     )
   }
+
 }
 
-export default PostAsset
+export default PostVideoAsset
 
 export const query = graphql`
-  fragment PostAsset on ContentfulPostAsset {
+  fragment PostVideoAsset on ContentfulPostVideo {
     width
     verticalPosition
     indentLeft
     indentRight
     asset {
-      title
+      file {
+        url
+      }
+    }
+    poster {
       sizes {
-        ...GatsbyContentfulSizes_withWebp
+        src
       }
     }
   }
