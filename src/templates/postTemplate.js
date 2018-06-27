@@ -43,7 +43,14 @@ class PostTemplate extends React.Component {
             <div key={keyRow} className={styles.row} style={inlineStyles}>
               {row.postAsset.map((col, keyCol) => {
                 isOdd = !isOdd
-                return <PostAsset key={keyCol} post={col} odd={isOdd} />
+
+                if (col.__typename === 'ContentfulPostAsset') {
+                  return <PostAsset key={keyCol} post={col} odd={isOdd} nrCols={row.postAsset.length} />
+                }
+
+                if (col.__typename === 'ContentfulPostVideo') {
+                  return <PostVideoAsset post={col} odd={isOdd} nrCols={row.postAsset.length} />
+                }
               })}
             </div>
           )
@@ -130,19 +137,12 @@ export const pageQuery = graphql`
         __typename
         ... on ContentfulPostRow {
           postAsset {
-            width
-            verticalPosition
-            indentLeft
-            indentRight
-            asset {
-              title
-              sizes {
-                ...GatsbyContentfulSizes_withWebp
-              }
-              file {
-                contentType
-                url
-              }
+            __typename
+            ... on ContentfulPostAsset {
+              ...PostAsset
+            }
+            ... on ContentfulPostVideo {
+              ...PostVideoAsset
             }
           }
         }
