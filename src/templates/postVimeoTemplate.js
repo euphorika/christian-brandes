@@ -1,52 +1,57 @@
 import React from "react"
 import Helmet from "react-helmet"
-import PostRow from "../components/postRow"
 import PostRows from "../components/postRows"
 import styles from "../pages/index.module.scss"
 
-class PostTemplate extends React.Component {
+class PostVimeoTemplate extends React.Component {
 
   render() {
-    const { contentfulPost } = this.props.data
-    const { postRow } = contentfulPost
-
-    const teaser = postRow ? postRow[0] : []
-    const rows = postRow ? postRow.slice(1) : []
+    const { contentfulVimeoPost } = this.props.data
+    const { embedVimeo: { embedVimeo } } = contentfulVimeoPost
+    const { postRow } = contentfulVimeoPost
 
     return (
       <div className={styles.singlePost}>
         <Helmet>
-          <title>{contentfulPost.title}</title>
-          <meta name="description" content={contentfulPost.metaDescription} />
+          <title>{contentfulVimeoPost.title}</title>
+          <meta name="description" content={contentfulVimeoPost.metaDescription} />
           <style type="text/css">{`
             #header svg {
-              fill: ${contentfulPost.color}
+              fill: ${contentfulVimeoPost.color}
             }
             #footer,
             #footer a {
-              color: ${contentfulPost.color}
+              color: ${contentfulVimeoPost.color}
             }
           `}</style>
         </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
-          <PostRow row={teaser} />
+          <div className={styles.row}>
+            <div className={styles.vimeoContainer}>
+              <div className={styles.col} dangerouslySetInnerHTML={{__html: embedVimeo }} />
+            </div>
+          </div>
         </div>
         <div className={styles.posts}>
-          <PostRows rows={rows} />
+          <PostRows rows={postRow} />
         </div>
       </div>
     )
   }
+
 }
 
-export default PostTemplate
+export default PostVimeoTemplate
 
 export const pageQuery = graphql`
-  query PostByPath($slug: String!) {
-    contentfulPost(slug: { eq: $slug }) {
+  query VimeoPostByPath($slug: String!) {
+    contentfulVimeoPost(slug: { eq: $slug }) {
       title
       metaDescription
       color
+      embedVimeo {
+        embedVimeo
+      }
       postRow {
         __typename
         ... on ContentfulPostRow {

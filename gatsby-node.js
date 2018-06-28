@@ -19,14 +19,22 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           }
         }
       }
+      allContentfulVimeoPost {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }
   `).then(result => {
     if (result.errors) {
       return Promise.reject(result.errors)
     }
 
-    const postTemplatePath = `src/templates/postTemplate.js`
     const indexTemplatePath = `src/templates/indexTemplate.js`
+    const postTemplatePath = `src/templates/postTemplate.js`
+    const vimeoTemplatePath = `src/templates/postVimeoTemplate.js`
 
     result.data.allContentfulCategory.edges.forEach(({ node }) => {
       createPage({
@@ -42,6 +50,16 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       createPage({
         path: node.slug,
         component: path.resolve(postTemplatePath),
+        context: {
+          slug: node.slug
+        }
+      })
+    })
+
+    result.data.allContentfulVimeoPost.edges.forEach(({ node }) => {
+      createPage({
+        path: node.slug,
+        component: path.resolve(vimeoTemplatePath),
         context: {
           slug: node.slug
         }
