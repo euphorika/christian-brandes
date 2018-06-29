@@ -13,6 +13,8 @@ figure {
 
 .posts {
 
+  overflow: hidden;
+
   &.sticky {
     .row {
       width: 100%;
@@ -45,8 +47,8 @@ figure {
     @include breakpoint('m') {
       padding-left: $rowPadding * 0.7;
       padding-right: $rowPadding * 0.7;
-      margin-left: -$spaceBetween - $rowPadding * 0.7 + $minPagePadding;
-      margin-right: -$spaceBetween - $rowPadding * 0.7 + $minPagePadding;
+      margin-left: (-$spaceBetween - $rowPadding + $minPagePadding) * 0.7;
+      margin-right: (-$spaceBetween - $rowPadding + $minPagePadding) * 0.7;
     }
 
     @include breakpoint('l') {
