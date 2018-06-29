@@ -114,6 +114,11 @@ export const pageQuery = graphql`
             verticalPosition
             indentLeft
             indentRight
+            videoFallback {
+              sizes {
+                src
+              }
+            }
             asset {
               title
               sizes {
