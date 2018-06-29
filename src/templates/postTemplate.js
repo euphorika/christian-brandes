@@ -1,6 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
-import Vimeo from "../components/Vimeo"
+import Vimeo from "../components/vimeo"
 import PostRow from "../components/postRow"
 import PostRows from "../components/postRows"
 import styles from "../pages/index.module.scss"
