@@ -12,7 +12,7 @@ export default ( { rows } ) => {
 
   return (
     <div>
-      {rows.map((row, keyRow) => <PostRow key={keyRow} row={row} idOdd={isOdd} /> )}
+      {rows.map((row, keyRow) => <PostRow key={keyRow} row={row} isOdd={isOdd} /> )}
     </div>
   )
 }
