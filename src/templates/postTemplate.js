@@ -1,5 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
+import Vimeo from "../components/Vimeo"
 import PostRow from "../components/postRow"
 import PostRows from "../components/postRows"
 import styles from "../pages/index.module.scss"
@@ -8,15 +9,7 @@ class PostTemplate extends React.Component {
 
   renderTeaser(teaser, vimeo) {
     if (vimeo && vimeo.embedVimeo) {
-      return (
-        <div className={styles.row}>
-          <div className={styles.col}>
-            <div className={styles.vimeoContainer}>
-              <div dangerouslySetInnerHTML={{__html: vimeo.embedVimeo}} />
-            </div>
-          </div>
-        </div>
-      )
+      return <Vimeo vimeoCode={vimeo.embedVimeo} />
     }
 
     return <PostRow row={teaser} />
