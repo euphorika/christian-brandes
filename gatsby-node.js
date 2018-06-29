@@ -19,13 +19,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           }
         }
       }
-      allContentfulVimeoPost {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
     }
   `).then(result => {
     if (result.errors) {
@@ -34,7 +27,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
     const indexTemplatePath = `src/templates/indexTemplate.js`
     const postTemplatePath = `src/templates/postTemplate.js`
-    const vimeoTemplatePath = `src/templates/postVimeoTemplate.js`
 
     result.data.allContentfulCategory.edges.forEach(({ node }) => {
       createPage({
@@ -56,14 +48,5 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       })
     })
 
-    result.data.allContentfulVimeoPost.edges.forEach(({ node }) => {
-      createPage({
-        path: node.slug,
-        component: path.resolve(vimeoTemplatePath),
-        context: {
-          slug: node.slug
-        }
-      })
-    })
   })
 }

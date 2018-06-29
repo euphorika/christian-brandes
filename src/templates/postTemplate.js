@@ -6,12 +6,39 @@ import styles from "../pages/index.module.scss"
 
 class PostTemplate extends React.Component {
 
+  renderTeaser(teaser, vimeo) {
+    if (vimeo && vimeo.embedVimeo) {
+      return (
+        <div className={styles.row}>
+          <div className={styles.col}>
+            <div className={styles.vimeoContainer}>
+              <div dangerouslySetInnerHTML={{__html: vimeo.embedVimeo}} />
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    return <PostRow row={teaser} />
+  }
+
   render() {
     const { contentfulPost } = this.props.data
+    const { embedVimeo } = contentfulPost
     const { postRow } = contentfulPost
 
-    const teaser = postRow ? postRow[0] : []
-    const rows = postRow ? postRow.slice(1) : []
+    let teaser
+    let rows
+
+    if (embedVimeo && embedVimeo.embedVimeo) {
+      teaser = []
+      rows = postRow
+    } else {
+      teaser = postRow ? postRow[0] : []
+      rows = postRow ? postRow.slice(1) : []
+    }
+
+
 
     return (
       <div className={styles.singlePost}>
@@ -29,7 +56,7 @@ class PostTemplate extends React.Component {
           `}</style>
         </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
-          <PostRow row={teaser} />
+          {this.renderTeaser(teaser, embedVimeo)}
         </div>
         <div className={styles.posts}>
           <PostRows rows={rows} />
@@ -47,6 +74,9 @@ export const pageQuery = graphql`
       title
       metaDescription
       color
+      embedVimeo {
+        embedVimeo
+      }
       postRow {
         __typename
         ... on ContentfulPostRow {
