@@ -18,6 +18,8 @@ class IndexTemplate extends React.Component {
         <div key={keyRow} className={styles.row} style={inlineStyles}>
           {row.teasers.map((col, keyCol) => {
             isOdd = !isOdd
+            col.nrCols = row.teasers.length
+
             return <Teaser isOdd={isOdd} keyRow={keyRow} key={keyCol} col={col} />
           })}
         </div>
@@ -36,7 +38,7 @@ class IndexTemplate extends React.Component {
     return (
       <div>
         <Helmet defaultTitle={`Christian Brandes`} titleTemplate={`%s | Christian Brandes`}>
-          <meta name="description" content="Christian Brandes - Photograph based in Hamburg" />
+          <meta name="description" content={contentfulCategory.metaDescription} />
         </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
           <div className={styles.row}>
@@ -57,6 +59,7 @@ export default IndexTemplate
 export const pageQuery = graphql`
   query IndexByPath($slug: String!) {
     contentfulCategory(slug:{eq: $slug}) {
+      metaDescription
       sticky {
         title
         slug
@@ -65,7 +68,16 @@ export const pageQuery = graphql`
         featuredImage {
           title
           sizes {
-            ...GatsbyContentfulSizes_withWebp_noBase64
+            ...GatsbyContentfulSizes_withWebp
+          }
+          file {
+            contentType
+            url
+          }
+        }
+        videoFallback {
+          sizes {
+            src
           }
         }
       }
@@ -85,21 +97,36 @@ export const pageQuery = graphql`
               featuredImage {
                 title
                 sizes {
-                  ...GatsbyContentfulSizes_withWebp_noBase64
+                  ...GatsbyContentfulSizes_withWebp
+                }
+                file {
+                  contentType
+                  url
                 }
               }
             }
           }
           ... on ContentfulDeadCategoryTeaser {
             title
+            location
+            date
             width
             verticalPosition
             indentLeft
             indentRight
+            videoFallback {
+              sizes {
+                src
+              }
+            }
             asset {
               title
               sizes {
-                ...GatsbyContentfulSizes_withWebp_noBase64
+                ...GatsbyContentfulSizes_withWebp
+              }
+              file {
+                contentType
+                url
               }
             }
           }

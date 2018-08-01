@@ -25,8 +25,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const postTemplatePath = `src/templates/postTemplate.js`
     const indexTemplatePath = `src/templates/indexTemplate.js`
+    const postTemplatePath = `src/templates/postTemplate.js`
 
     result.data.allContentfulCategory.edges.forEach(({ node }) => {
       createPage({
@@ -47,5 +47,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         }
       })
     })
+
   })
 }

@@ -1,76 +1,58 @@
 import React from "react"
 import Helmet from "react-helmet"
-import Img from "gatsby-image"
-import TeaserAnimation from "../components/teaserAnimation"
+import Vimeo from "../components/vimeo"
+import PostRow from "../components/postRow"
+import PostRows from "../components/postRows"
 import styles from "../pages/index.module.scss"
 
 class PostTemplate extends React.Component {
 
-  renderImages(postImages) {
-    if (!postImages) {
-      return
+  renderTeaser(teaser, vimeo) {
+    if (vimeo && vimeo.embedVimeo) {
+      return <Vimeo vimeoCode={vimeo.embedVimeo} />
     }
 
-    let isOdd = true
-
-    return postImages.map((row, keyRow) => {
-
-      const inlineStyles = {
-        marginTop: row.verticalPosition ? row.verticalPosition : 0
-      }
-
-      return (
-        <div key={keyRow} className={styles.row} style={inlineStyles}>
-          {row.postAsset.map((col, keyCol) => {
-
-            const inlineStyles = {
-              flex: col.width ? col.width / 100 : 1,
-              marginTop: col.verticalPosition ? col.verticalPosition : '0',
-            }
-
-            const indentStyles = {
-              paddingLeft: col.indentLeft ? col.indentLeft : 0,
-              paddingRight: col.indentRight ? col.indentRight : 0
-            }
-
-            isOdd = !isOdd
-
-            return (
-              <div key={keyCol} className={styles.col} style={inlineStyles}>
-                <div className={isOdd ? styles.odd : styles.even} style={indentStyles}>
-                  <TeaserAnimation>
-                    <Img sizes={col.asset.sizes} alt={col.asset.title} />
-                  </TeaserAnimation>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      )
-    })
+    return <PostRow row={teaser} />
   }
 
   render() {
     const { contentfulPost } = this.props.data
+    const { embedVimeo } = contentfulPost
     const { postRow } = contentfulPost
+
+    let teaser
+    let rows
+
+    if (embedVimeo && embedVimeo.embedVimeo) {
+      teaser = []
+      rows = postRow
+    } else {
+      teaser = postRow ? postRow[0] : []
+      rows = postRow ? postRow.slice(1) : []
+    }
+
+
 
     return (
       <div className={styles.singlePost}>
         <Helmet>
           <title>{contentfulPost.title}</title>
           <meta name="description" content={contentfulPost.metaDescription} />
+          <style type="text/css">{`
+            #header svg {
+              fill: ${contentfulPost.color}
+            }
+            #footer,
+            #footer a {
+              color: ${contentfulPost.color}
+            }
+          `}</style>
         </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <TeaserAnimation>
-                <Img sizes={contentfulPost.featuredImage.sizes} alt={contentfulPost.featuredImage.title} />
-              </TeaserAnimation>
-            </div>
-          </div>
+          {this.renderTeaser(teaser, embedVimeo)}
         </div>
         <div className={styles.posts}>
-          {this.renderImages(postRow)}
+          <PostRows rows={rows} />
         </div>
       </div>
     )
@@ -84,26 +66,30 @@ export const pageQuery = graphql`
     contentfulPost(slug: { eq: $slug }) {
       title
       metaDescription
-      featuredImage {
-        title
-        sizes {
-          ...GatsbyContentfulSizes_withWebp_noBase64
-        }
+      color
+      embedVimeo {
+        embedVimeo
       }
       postRow {
-        postAsset {
-          width
-          verticalPosition
-          indentLeft
-          indentRight
-          asset {
-            title
-            sizes {
-              ...GatsbyContentfulSizes_withWebp_noBase64
+        __typename
+        ... on ContentfulPostRow {
+          postAsset {
+            __typename
+            ... on ContentfulPostAsset {
+              ...PostAsset
+            }
+            ... on ContentfulPostVideo {
+              ...PostVideoAsset
             }
           }
+        }
+        ... on ContentfulPostAsset {
+          ...PostAsset
+        }
+        ... on ContentfulPostVideo {
+          ...PostVideoAsset
         }
       }
     }
   }
-`;
+`

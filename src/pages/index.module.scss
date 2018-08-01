@@ -13,6 +13,8 @@ figure {
 
 .posts {
 
+  overflow: hidden;
+
   &.sticky {
     .row {
       width: 100%;
@@ -45,13 +47,15 @@ figure {
     @include breakpoint('m') {
       padding-left: $rowPadding * 0.7;
       padding-right: $rowPadding * 0.7;
-      margin-left: -$spaceBetween + $minPagePadding;
-      margin-right: -$spaceBetween + $minPagePadding;
+      margin-left: (-$spaceBetween - $rowPadding + $minPagePadding) * 0.7;
+      margin-right: (-$spaceBetween - $rowPadding + $minPagePadding) * 0.7;
     }
 
     @include breakpoint('l') {
       padding-left: $rowPadding;
       padding-right: $rowPadding;
+      margin-left: -$spaceBetween - $rowPadding + $minPagePadding;
+      margin-right: -$spaceBetween - $rowPadding + $minPagePadding;
     }
 
     position: relative;
@@ -63,6 +67,17 @@ figure {
 
     img {
       max-width: 100%;
+    }
+
+    .videoContainer {
+      video {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .vimeoContainer {
+      margin-top: 20%;
     }
 
     .col {

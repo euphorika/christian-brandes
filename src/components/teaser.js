@@ -7,13 +7,32 @@ import styles from "../pages/index.module.scss"
 
 class Teaser extends React.Component {
 
+  renderMedia(teaser) {
+    if (!teaser.featuredImage.file.contentType.startsWith('video')) {
+      return <Figure teaser={teaser} />
+    }
+
+    const date = new Date(teaser.date)
+
+    return (
+      <div className={styles.videoContainer}>
+        <video poster={teaser.videoFallback ? teaser.videoFallback.sizes.src : null} playsInline autoPlay loop muted>
+          <source src={teaser.featuredImage.file.url} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <h2>{teaser.title}</h2>
+        <p>{teaser.location},&nbsp;{date.toLocaleString('en-us', { month: 'long' })}&nbsp;{date.getFullYear()}</p>
+      </div>
+    )
+  }
+
   renderTeaser(teaser, inlineStyles, indentStyles, oddOrEven) {
     return (
       <div className={styles.col} style={inlineStyles}>
         <div className={oddOrEven} style={indentStyles}>
           <TeaserAnimation>
             <Link to={teaser.slug}>
-              <Figure teaser={teaser} />
+              {this.renderMedia(teaser)}
             </Link>
           </TeaserAnimation>
         </div>
@@ -22,11 +41,13 @@ class Teaser extends React.Component {
   }
 
   renderDeadTeaser(teaser, inlineStyles, indentStyles, oddOrEven) {
+    teaser.featuredImage = teaser.asset // awful
+
     return (
       <div className={styles.col} style={inlineStyles}>
         <div className={oddOrEven} style={indentStyles}>
           <TeaserAnimation>
-            <Img sizes={teaser.asset.sizes} alt={teaser.asset.title} />
+            {this.renderMedia(teaser)}
           </TeaserAnimation>
         </div>
       </div>
@@ -38,7 +59,7 @@ class Teaser extends React.Component {
 
     const inlineStyles = {
       marginTop: col.marginTop ? col.marginTop : 0,
-      flex: col.width ? col.width / 100 : 1
+      flex: col.width ? col.width / 100 : col.nrCols === 1 ? 0.7 : 1
     }
 
     const indentStyles = {
