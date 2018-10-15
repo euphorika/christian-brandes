@@ -2,6 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import Teaser from "../components/teaser"
 import styles from "../pages/index.module.scss"
+import { graphql } from 'gatsby'
 
 class IndexTemplate extends React.Component {
 

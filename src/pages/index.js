@@ -1,8 +1,10 @@
 import React from "react"
 import Link from "gatsby-link"
+// eslint-disable-next-line
 import Img from "gatsby-image"
 import Helmet from "react-helmet"
 import Logo from "../components/logo"
+import Layout from "../components/layout"
 import IconNavigation from "../components/iconNavigation"
 import styles from "../components/layout.module.scss"
 

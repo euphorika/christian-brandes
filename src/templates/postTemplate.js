@@ -4,6 +4,7 @@ import Vimeo from "../components/vimeo"
 import PostRow from "../components/postRow"
 import PostRows from "../components/postRows"
 import styles from "../pages/index.module.scss"
+import { graphql } from 'gatsby'
 
 class PostTemplate extends React.Component {
 

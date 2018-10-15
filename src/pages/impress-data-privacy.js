@@ -1,6 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import Lightbox from "../components/lightbox"
+import { graphql } from 'gatsby'
 
 export default ({ data, transition }) => (
   <div style={transition && transition.style}>

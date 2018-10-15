@@ -2,6 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import Lightbox from "../components/lightbox"
 import styles from "./about.module.scss"
+import { graphql } from 'gatsby'
 
 export default ({ data, transition }) => (
   <div style={transition && transition.style}>
