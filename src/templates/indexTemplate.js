@@ -40,20 +40,20 @@ class IndexTemplate extends React.Component {
     }
 
     return (
-<Layout>
-      <div>
-        <Helmet defaultTitle={`Christian Brandes`} titleTemplate={`%s | Christian Brandes`}>
-          <meta name="description" content={contentfulCategory.metaDescription} />
-        </Helmet>
-        <div className={styles.posts + ' ' + styles.sticky}>
-          <div className={styles.row}>
-            <Teaser col={stickyTeaser} img={sticky.featuredImage} />
+      <Layout>
+        <div>
+          <Helmet defaultTitle={`Christian Brandes`} titleTemplate={`%s | Christian Brandes`}>
+            <meta name="description" content={contentfulCategory.metaDescription} />
+          </Helmet>
+          <div className={styles.posts + ' ' + styles.sticky}>
+            <div className={styles.row}>
+              <Teaser col={stickyTeaser} img={sticky.featuredImage} />
+            </div>
+          </div>
+          <div className={styles.posts}>
+            {this.renderPosts(posts)}
           </div>
         </div>
-        <div className={styles.posts}>
-          {this.renderPosts(posts)}
-        </div>
-      </div>
       </Layout>
     );
   }
