@@ -5,6 +5,7 @@ import PostRow from "../components/postRow"
 import PostRows from "../components/postRows"
 import styles from "../pages/index.module.scss"
 import { graphql } from 'gatsby'
+import Layout from "../components/layout"
 
 class PostTemplate extends React.Component {
 
@@ -35,6 +36,7 @@ class PostTemplate extends React.Component {
 
 
     return (
+      <Layout>
       <div className={styles.singlePost}>
         <Helmet>
           <title>{contentfulPost.title}</title>
@@ -56,6 +58,7 @@ class PostTemplate extends React.Component {
           <PostRows rows={rows} />
         </div>
       </div>
+      </Layout>
     )
   }
 }

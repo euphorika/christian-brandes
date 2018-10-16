@@ -3,6 +3,7 @@ import Helmet from "react-helmet"
 import Teaser from "../components/teaser"
 import styles from "../pages/index.module.scss"
 import { graphql } from 'gatsby'
+import Layout from "../components/layout"
 
 class IndexTemplate extends React.Component {
 
@@ -16,6 +17,7 @@ class IndexTemplate extends React.Component {
       }
 
       return (
+        <Layout>
         <div key={keyRow} className={styles.row} style={inlineStyles}>
           {row.teasers.map((col, keyCol) => {
             isOdd = !isOdd
@@ -24,6 +26,7 @@ class IndexTemplate extends React.Component {
             return <Teaser isOdd={isOdd} keyRow={keyRow} key={keyCol} col={col} />
           })}
         </div>
+        </Layout>
       )
     })
   }
@@ -37,6 +40,7 @@ class IndexTemplate extends React.Component {
     }
 
     return (
+<Layout>
       <div>
         <Helmet defaultTitle={`Christian Brandes`} titleTemplate={`%s | Christian Brandes`}>
           <meta name="description" content={contentfulCategory.metaDescription} />
@@ -50,6 +54,7 @@ class IndexTemplate extends React.Component {
           {this.renderPosts(posts)}
         </div>
       </div>
+      </Layout>
     );
   }
 

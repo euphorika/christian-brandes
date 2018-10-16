@@ -1,5 +1,5 @@
 import React from "react"
-import Link from "gatsby-link"
+import {Link} from "gatsby"
 // eslint-disable-next-line
 import Img from "gatsby-image"
 import Helmet from "react-helmet"
@@ -8,6 +8,7 @@ import IconNavigation from "../components/iconNavigation"
 import styles from "./layout.module.scss"
 
 export default ({ children }) => (
+ 
   <div className={styles.page}>
     <Helmet defaultTitle={`Christian Brandes - Photograph`} titleTemplate={`%s | Christian Brandes - Photograph`}>
       <meta charSet="utf-8" />

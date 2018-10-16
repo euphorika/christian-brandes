@@ -2,9 +2,11 @@ import React from "react"
 import Helmet from "react-helmet"
 import Lightbox from "../components/lightbox"
 import { graphql } from 'gatsby'
+import Layout from "../components/Layout"
+
 
 export default ({ data, transition }) => (
-  <div style={transition && transition.style}>
+  <Layout style={transition && transition.style}>
     <Helmet>
       <title>{data.contentfulPage.title}</title>
       <meta name="description" content={data.contentfulPage.metaDescription} />
@@ -34,7 +36,7 @@ export default ({ data, transition }) => (
         <div dangerouslySetInnerHTML={{__html: data.contentfulPage.textBlocks[1].body.childMarkdownRemark.html }} />
       </div>
     </Lightbox>
-  </div>
+  </Layout>
 )
 
 export const pageQuery = graphql`

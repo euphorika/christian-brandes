@@ -1,6 +1,5 @@
 import React from "react"
-import Link from "gatsby-link"
-// eslint-disable-next-line
+import {Link} from "gatsby"
 import Img from "gatsby-image"
 import Helmet from "react-helmet"
 import Logo from "../components/logo"
@@ -8,9 +7,8 @@ import Layout from "../components/layout"
 import IconNavigation from "../components/iconNavigation"
 import styles from "../components/layout.module.scss"
 
-export default ({ children }) => (
-  <Layout>
-  <div className={styles.page}>
+export default ({children}) => (
+  <Layout className={styles.page}>
     <Helmet defaultTitle={`Christian Brandes - Photograph`} titleTemplate={`%s | Christian Brandes - Photograph`}>
       <meta charSet="utf-8" />
       <meta name="description" content="Christian Brandes - Photograph based in Hamburg" />
@@ -41,6 +39,5 @@ export default ({ children }) => (
         <Link to="/impress-data-privacy">Impressum &amp; Datenschutz</Link>
       </nav>
     </footer>
-  </div>
   </Layout>
 )

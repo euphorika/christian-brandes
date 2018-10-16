@@ -10,8 +10,8 @@ module.exports = {
   siteMetadata: {
     siteUrl
   },
-  plugins: [`gatsby-plugin-postcss`],
-    [
+  plugins: [`gatsby-plugin-postcss`,
+    
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-google-fonts`,
