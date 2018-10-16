@@ -17,7 +17,6 @@ class IndexTemplate extends React.Component {
       }
 
       return (
-        <Layout>
         <div key={keyRow} className={styles.row} style={inlineStyles}>
           {row.teasers.map((col, keyCol) => {
             isOdd = !isOdd
@@ -26,7 +25,6 @@ class IndexTemplate extends React.Component {
             return <Teaser isOdd={isOdd} keyRow={keyRow} key={keyCol} col={col} />
           })}
         </div>
-        </Layout>
       )
     })
   }
@@ -40,8 +38,7 @@ class IndexTemplate extends React.Component {
     }
 
     return (
-<Layout>
-      <div>
+      <Layout>
         <Helmet defaultTitle={`Christian Brandes`} titleTemplate={`%s | Christian Brandes`}>
           <meta name="description" content={contentfulCategory.metaDescription} />
         </Helmet>
@@ -53,11 +50,9 @@ class IndexTemplate extends React.Component {
         <div className={styles.posts}>
           {this.renderPosts(posts)}
         </div>
-      </div>
       </Layout>
-    );
+    )
   }
-
 }
 
 export default IndexTemplate
@@ -140,4 +135,4 @@ export const pageQuery = graphql`
       }
    	}
   }
-`;
+`

@@ -8,7 +8,6 @@ import IconNavigation from "../components/iconNavigation"
 import styles from "./layout.module.scss"
 
 export default ({ children }) => (
- 
   <div className={styles.page}>
     <Helmet defaultTitle={`Christian Brandes - Photograph`} titleTemplate={`%s | Christian Brandes - Photograph`}>
       <meta charSet="utf-8" />
