@@ -58,14 +58,18 @@ class Teaser extends React.Component {
     const { col, isOdd } = this.props
 
     const inlineStyles = {
-      marginTop: col.marginTop ? col.marginTop : 0,
+      marginTop: col.verticalPosition ? col.verticalPosition : 0,
       flex: col.width ? col.width / 100 : col.nrCols === 1 ? 0.7 : 1
     }
 
+    console.log(col)
+
     const indentStyles = {
-      paddingLeft: col.paddingLeft ? col.paddingLeft : 0,
-      paddingRight: col.paddingRight ? col.paddingRight : 0
+      paddingLeft: col.indentLeft ? col.indentLeft : 0,
+      paddingRight: col.indentRight ? col.indentRight : 0
     }
+
+    console.log(indentStyles)
 
     let oddOrEven = ''
 

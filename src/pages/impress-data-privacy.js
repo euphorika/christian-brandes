@@ -4,7 +4,6 @@ import Lightbox from "../components/lightbox"
 import { graphql } from 'gatsby'
 import Layout from "../components/Layout"
 
-
 export default ({ data, transition }) => (
   <Layout style={transition && transition.style}>
     <Helmet>

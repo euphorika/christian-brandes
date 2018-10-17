@@ -17,8 +17,7 @@ class IndexTemplate extends React.Component {
       }
 
       return (
-        <div key={keyRow} className={styles.row} style={inlineStyles}>
-          {row.teasers.map((col, keyCol) => {
+        <div key={keyRow} className={styles.row} style={inlineStyles}>          {row.teasers.map((col, keyCol) => {
             isOdd = !isOdd
             col.nrCols = row.teasers.length
 
