@@ -2,7 +2,7 @@ import React from "react"
 import PostAsset from "../components/postAsset"
 import PostVideoAsset from "../components/postVideoAsset"
 import styles from "../pages/index.module.scss"
-
+/* eslint-disable */ 
 export default ( { row, isOdd = {} } ) => {
 
   const inlineStyles = {

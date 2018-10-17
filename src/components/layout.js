@@ -1,10 +1,10 @@
+/* eslint-disable */ 
 import React from "react"
 import {Link} from "gatsby"
 import Helmet from "react-helmet"
 import Logo from "../components/logo"
 import IconNavigation from "../components/iconNavigation"
 import styles from "./layout.module.scss"
-
 export default ({ children }) => (
   <div className={styles.page}>
     <Helmet defaultTitle={`Christian Brandes - Photograph`} titleTemplate={`%s | Christian Brandes - Photograph`}>
