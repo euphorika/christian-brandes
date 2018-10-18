@@ -1,5 +1,5 @@
 import React from "react"
-import {Link} from "gatsby"
+import { Link } from "gatsby"
 import Figure from "./figure"
 import TeaserAnimation from "../components/teaserAnimation"
 import styles from "../pages/index.module.scss"
@@ -61,14 +61,10 @@ class Teaser extends React.Component {
       flex: col.width ? col.width / 100 : col.nrCols === 1 ? 0.7 : 1
     }
 
-    console.log(col)
-
     const indentStyles = {
       paddingLeft: col.indentLeft ? col.indentLeft : 0,
       paddingRight: col.indentRight ? col.indentRight : 0
     }
-
-    console.log(indentStyles)
 
     let oddOrEven = ''
 

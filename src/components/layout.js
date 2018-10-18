@@ -1,16 +1,17 @@
-/* eslint-disable */ 
+/* eslint-disable */
 import React from "react"
-import {Link} from "gatsby"
+import { Link } from "gatsby"
 import Helmet from "react-helmet"
 import Logo from "../components/logo"
 import IconNavigation from "../components/iconNavigation"
 import styles from "./layout.module.scss"
+
 export default ({ children }) => (
   <div className={styles.page}>
     <Helmet defaultTitle={`Christian Brandes - Photograph`} titleTemplate={`%s | Christian Brandes - Photograph`}>
       <meta charSet="utf-8" />
       <meta name="description" content="Christian Brandes - Photograph based in Hamburg" />
-      <Link rel="icon" type="image/png" href="favicon.png" />
+      <link rel="icon" type="image/png" href="favicon.png" />
     </Helmet>
     <header id="header" className={styles.header}>
       <div className={styles.logoContainer}>

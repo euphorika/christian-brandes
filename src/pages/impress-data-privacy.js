@@ -2,7 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import Lightbox from "../components/lightbox"
 import { graphql } from 'gatsby'
-import Layout from "../components/Layout"
+import Layout from "../components/layout"
 
 export default ({ data, transition }) => (
   <Layout style={transition && transition.style}>

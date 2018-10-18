@@ -3,7 +3,7 @@ import Helmet from "react-helmet"
 import Lightbox from "../components/lightbox"
 import styles from "./about.module.scss"
 import { graphql } from "gatsby"
-import Layout from "../components/Layout"
+import Layout from "../components/layout"
 
 export default ({ data, transition }) => (
   <Layout style={transition && transition.style}>
