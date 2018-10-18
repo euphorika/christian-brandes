@@ -2,7 +2,8 @@ require('dotenv').config()
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID || ''
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN
-const environment = process.env.CONTEXT === 'production' ? 'master' : 'staging'
+// const environment = process.env.CONTEXT === 'production' ? 'master' : 'staging' // configuration option for different spaces
+const environment = 'master'
 
 const siteUrl = process.env.CONTEXT === 'production' ? process.env.URL : process.env.DEPLOY_PRIME_URL
 

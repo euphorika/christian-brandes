@@ -68,8 +68,8 @@ export const pageQuery = graphql`
         date
         featuredImage {
           title
-          sizes {
-            ...GatsbyContentfulSizes_withWebp
+          sizes(quality:90) {
+            ...GatsbyContentfulSizes
           }
           file {
             contentType
@@ -77,7 +77,7 @@ export const pageQuery = graphql`
           }
         }
         videoFallback {
-          sizes {
+          sizes(quality:90) {
             src
           }
         }
@@ -97,8 +97,8 @@ export const pageQuery = graphql`
               date
               featuredImage {
                 title
-                sizes {
-                  ...GatsbyContentfulSizes_withWebp
+                sizes(quality:90) {
+                  ...GatsbyContentfulSizes
                 }
                 file {
                   contentType
@@ -116,14 +116,14 @@ export const pageQuery = graphql`
             indentLeft
             indentRight
             videoFallback {
-              sizes {
+              sizes(quality:90) {
                 src
               }
             }
             asset {
               title
-              sizes {
-                ...GatsbyContentfulSizes_withWebp
+              sizes(quality:90) {
+                ...GatsbyContentfulSizes
               }
               file {
                 contentType
