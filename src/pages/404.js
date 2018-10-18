@@ -1,6 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
-import {Link} from "gatsby"
+import { Link } from "gatsby"
 import styles from "./404.module.scss"
 import Layout from "../components/layout"
 

@@ -2,7 +2,6 @@ import React from "react"
 import PostAsset from "../components/postAsset"
 import PostVideoAsset from "../components/postVideoAsset"
 import styles from "../pages/index.module.scss"
-/* eslint-disable */ 
 export default ( { row, isOdd = {} } ) => {
 
   const inlineStyles = {
@@ -19,9 +18,7 @@ export default ( { row, isOdd = {} } ) => {
 
             if (col.__typename === 'ContentfulPostAsset') {
               return <PostAsset key={keyCol} post={col} odd={isOdd.value} nrCols={row.postAsset.length} />
-            }
-
-            if (col.__typename === 'ContentfulPostVideo') {
+            } else { // 'ContentfulPostVideo'
               return <PostVideoAsset key={keyCol} post={col} odd={isOdd.value} nrCols={row.postAsset.length} />
             }
           })}
