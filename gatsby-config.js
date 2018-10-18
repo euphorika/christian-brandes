@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID || ''
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN
-const environment = process.env.CONTEXT === 'production' ? 'master' : 'staging'
+const environment = process.env.CONTEXT === 'production' ? 'master' : 'master'
 
 const siteUrl = process.env.CONTEXT === 'production' ? process.env.URL : process.env.DEPLOY_PRIME_URL
 
@@ -10,9 +10,10 @@ module.exports = {
   siteMetadata: {
     siteUrl
   },
-  plugins: [`gatsby-plugin-postcss`,
+  plugins: [
+    `gatsby-plugin-postcss`,
     
-    `gatsby-plugin-sass`,
+     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {

@@ -68,7 +68,7 @@ export const pageQuery = graphql`
         featuredImage {
           title
           sizes {
-            ...GatsbyContentfulSizes_withWebp
+            ...GatsbyContentfulSizes
           }
           file {
             contentType
@@ -97,7 +97,7 @@ export const pageQuery = graphql`
               featuredImage {
                 title
                 sizes {
-                  ...GatsbyContentfulSizes_withWebp
+                  ...GatsbyContentfulSizes
                 }
                 file {
                   contentType
@@ -122,7 +122,7 @@ export const pageQuery = graphql`
             asset {
               title
               sizes {
-                ...GatsbyContentfulSizes_withWebp
+                ...GatsbyContentfulSizes
               }
               file {
                 contentType
