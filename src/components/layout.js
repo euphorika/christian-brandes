@@ -1,6 +1,5 @@
 import React from "react"
-import Link from "gatsby-link"
-import Img from "gatsby-image"
+import { Link } from "gatsby"
 import Helmet from "react-helmet"
 import Logo from "../components/logo"
 import IconNavigation from "../components/iconNavigation"
@@ -28,7 +27,7 @@ export default ({ children }) => (
       </div>
     </header>
     <main id="main" className={styles.content}>
-      {children()}
+      {children}
     </main>
     <footer id="footer" className={styles.footer}>
       <div className={styles.copyright}>

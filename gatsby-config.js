@@ -46,7 +46,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "Christian Brandes - Photograph Based in Hamburg",
+        name: "Christian Brandes - Photographer Based in Hamburg",
         short_name: "Christian Brandes",
         start_url: "/",
         background_color: "#ffffff",
@@ -56,6 +56,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-
   ]
 };

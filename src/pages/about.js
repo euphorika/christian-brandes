@@ -2,9 +2,11 @@ import React from "react"
 import Helmet from "react-helmet"
 import Lightbox from "../components/lightbox"
 import styles from "./about.module.scss"
+import { graphql } from "gatsby"
+import Layout from "../components/layout"
 
-export default ({ data, transition }) => (
-  <div style={transition && transition.style}>
+export default ({ data }) => (
+  <Layout>
     <Helmet>
       <title>{data.contentfulPage.title}</title>
       <meta name="description" content={data.contentfulPage.metaDescription} />
@@ -36,7 +38,7 @@ export default ({ data, transition }) => (
         </div>
       </div>
     </Lightbox>
-  </div>
+  </Layout>
 )
 
 export const pageQuery = graphql`

@@ -2,6 +2,8 @@ import React from "react"
 import Helmet from "react-helmet"
 import Teaser from "../components/teaser"
 import styles from "../pages/index.module.scss"
+import { graphql } from 'gatsby'
+import Layout from "../components/layout"
 
 class IndexTemplate extends React.Component {
 
@@ -36,7 +38,7 @@ class IndexTemplate extends React.Component {
     }
 
     return (
-      <div>
+      <Layout>
         <Helmet defaultTitle={`Christian Brandes`} titleTemplate={`%s | Christian Brandes`}>
           <meta name="description" content={contentfulCategory.metaDescription} />
         </Helmet>
@@ -48,10 +50,9 @@ class IndexTemplate extends React.Component {
         <div className={styles.posts}>
           {this.renderPosts(posts)}
         </div>
-      </div>
-    );
+      </Layout>
+    )
   }
-
 }
 
 export default IndexTemplate
@@ -134,4 +135,4 @@ export const pageQuery = graphql`
       }
    	}
   }
-`;
+`

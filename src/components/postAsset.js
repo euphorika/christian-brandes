@@ -1,7 +1,7 @@
 import React from 'react'
 import Img from "gatsby-image"
 import PostCol from "../components/postCol"
-import styles from "../pages/index.module.scss"
+import { graphql } from 'gatsby'
 
 class PostAsset extends React.Component {
 

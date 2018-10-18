@@ -4,6 +4,8 @@ import Vimeo from "../components/vimeo"
 import PostRow from "../components/postRow"
 import PostRows from "../components/postRows"
 import styles from "../pages/index.module.scss"
+import { graphql } from "gatsby"
+import Layout from "../components/layout"
 
 class PostTemplate extends React.Component {
 
@@ -34,7 +36,7 @@ class PostTemplate extends React.Component {
 
 
     return (
-      <div className={styles.singlePost}>
+      <Layout className={styles.singlePost}>
         <Helmet>
           <title>{contentfulPost.title}</title>
           <meta name="description" content={contentfulPost.metaDescription} />
@@ -54,7 +56,7 @@ class PostTemplate extends React.Component {
         <div className={styles.posts}>
           <PostRows rows={rows} />
         </div>
-      </div>
+      </Layout>
     )
   }
 }

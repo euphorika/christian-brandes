@@ -1,6 +1,5 @@
 import React from "react"
-import Link from "gatsby-link"
-import Img from "gatsby-image"
+import { Link } from "gatsby"
 import Figure from "./figure"
 import TeaserAnimation from "../components/teaserAnimation"
 import styles from "../pages/index.module.scss"
@@ -58,13 +57,13 @@ class Teaser extends React.Component {
     const { col, isOdd } = this.props
 
     const inlineStyles = {
-      marginTop: col.marginTop ? col.marginTop : 0,
+      marginTop: col.verticalPosition ? col.verticalPosition : 0,
       flex: col.width ? col.width / 100 : col.nrCols === 1 ? 0.7 : 1
     }
 
     const indentStyles = {
-      paddingLeft: col.paddingLeft ? col.paddingLeft : 0,
-      paddingRight: col.paddingRight ? col.paddingRight : 0
+      paddingLeft: col.indentLeft ? col.indentLeft : 0,
+      paddingRight: col.indentRight ? col.indentRight : 0
     }
 
     let oddOrEven = ''

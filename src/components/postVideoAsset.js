@@ -1,6 +1,7 @@
 import React from "react"
 import PostCol from "../components/postCol"
 import styles from "../pages/index.module.scss"
+import { graphql } from 'gatsby'
 
 class PostVideoAsset extends React.Component {
 
