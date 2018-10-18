@@ -68,7 +68,7 @@ export const pageQuery = graphql`
         date
         featuredImage {
           title
-          sizes(quality:100) {
+          sizes(quality:90) {
             ...GatsbyContentfulSizes
           }
           file {
@@ -77,7 +77,7 @@ export const pageQuery = graphql`
           }
         }
         videoFallback {
-          sizes(quality:100) {
+          sizes(quality:90) {
             src
           }
         }
@@ -97,7 +97,7 @@ export const pageQuery = graphql`
               date
               featuredImage {
                 title
-                sizes(quality:100) {
+                sizes(quality:90) {
                   ...GatsbyContentfulSizes
                 }
                 file {
@@ -116,13 +116,13 @@ export const pageQuery = graphql`
             indentLeft
             indentRight
             videoFallback {
-              sizes(quality:100) {
+              sizes(quality:90) {
                 src
               }
             }
             asset {
               title
-              sizes(quality:100) {
+              sizes(quality:90) {
                 ...GatsbyContentfulSizes
               }
               file {

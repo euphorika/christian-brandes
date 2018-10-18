@@ -26,8 +26,8 @@ export const query = graphql`
     indentRight
     asset {
       title
-      sizes {
-        ...GatsbyContentfulSizes_withWebp
+      sizes(quality:90) {
+        ...GatsbyContentfulSizes
       }
     }
   }
