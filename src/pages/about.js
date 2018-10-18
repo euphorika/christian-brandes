@@ -5,8 +5,8 @@ import styles from "./about.module.scss"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
-export default ({ data, transition }) => (
-  <Layout style={transition && transition.style}>
+export default ({ data }) => (
+  <Layout>
     <Helmet>
       <title>{data.contentfulPage.title}</title>
       <meta name="description" content={data.contentfulPage.metaDescription} />
