@@ -13,7 +13,7 @@ class IndexTemplate extends React.Component {
     return posts.map((row, keyRow) => {
 
       const inlineStyles = {
-        marginTop: row.verticalPosition ? row.verticalPosition : 0
+        marginTop: row.rowVerticalPosition ? row.rowVerticalPosition : 0
       }
 
       return (
@@ -83,6 +83,7 @@ export const pageQuery = graphql`
         }
       }
       posts {
+        rowVerticalPosition
         teasers {
           __typename
           ... on ContentfulCategoryTeaser {
