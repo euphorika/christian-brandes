@@ -1,7 +1,9 @@
 import React from "react"
 import PostAsset from "../components/postAsset"
 import PostVideoAsset from "../components/postVideoAsset"
+import TextTeaser from '../components/textTeaser'
 import styles from "../pages/index.module.scss"
+
 export default ( { row, isOdd = {} } ) => {
 
   const inlineStyles = {
@@ -38,6 +40,14 @@ export default ( { row, isOdd = {} } ) => {
       return (
         <div className={styles.row} style={inlineStyles}>
           <PostVideoAsset post={row} odd={isOdd.value} nrCols={1} />
+        </div>
+      )
+
+    case 'ContentfulTextTeaser':
+      isOdd.value = !isOdd.value
+      return (
+        <div className={styles.row} style={inlineStyles}>
+          <TextTeaser post={row} odd={isOdd.value} nrCols={1} />
         </div>
       )
 
