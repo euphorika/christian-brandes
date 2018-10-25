@@ -57,5 +57,6 @@ module.exports = {
       },
     },
     //`gatsby-plugin-offline`, // videos not auto playing in safari
+    'gatsby-plugin-remove-serviceworker', // temporary
   ]
 };
