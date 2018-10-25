@@ -33,8 +33,6 @@ class PostTemplate extends React.Component {
       rows = postRow ? postRow.slice(1) : []
     }
 
-
-
     return (
       <Layout className={styles.singlePost}>
         <Helmet>
@@ -90,6 +88,9 @@ export const pageQuery = graphql`
         }
         ... on ContentfulPostVideo {
           ...PostVideoAsset
+        }
+        ... on ContentfulTextTeaser {
+          ...TextTeaser
         }
       }
     }
