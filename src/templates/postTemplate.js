@@ -33,8 +33,6 @@ class PostTemplate extends React.Component {
       rows = postRow ? postRow.slice(1) : []
     }
 
-    console.log(rows)
-
     return (
       <Layout className={styles.singlePost}>
         <Helmet>
