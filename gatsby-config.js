@@ -56,6 +56,6 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
-    `gatsby-plugin-offline`,
+    //`gatsby-plugin-offline`, // videos not auto playing in safari
   ]
 };
