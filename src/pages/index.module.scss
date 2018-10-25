@@ -42,7 +42,6 @@ figure {
     }
 
     justify-content: space-between;
-    text-transform: uppercase;
 
     @include breakpoint('m') {
       padding-left: $rowPadding * 0.7;
@@ -67,6 +66,28 @@ figure {
 
     img {
       max-width: 100%;
+    }
+
+    figcaption {
+      text-transform: uppercase;
+    }
+
+    .textContainer {
+      h1 {
+        font-size: 16px;
+      }
+
+      p {
+        margin: 1em 0;
+      }
+
+      a {
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
     .videoContainer {

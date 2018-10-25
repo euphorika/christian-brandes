@@ -2,9 +2,11 @@ import React from 'react'
 import PostCol from "../components/postCol"
 import { graphql } from 'gatsby'
 
+import styles from '../pages/index.module.scss'
+
 const TextTeaser = ({ post, odd, nrCols }) => (
   <PostCol post={post} odd={odd} nrCols={nrCols}>
-    <div dangerouslySetInnerHTML={{__html: post.longText.childMarkdownRemark.html}} />
+    <div className={styles.textContainer} dangerouslySetInnerHTML={{__html: post.longText.childMarkdownRemark.html}} />
   </PostCol>
 )
 
