@@ -2,6 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import Figure from "./figure"
 import TeaserAnimation from "../components/teaserAnimation"
+import Helmet from 'react-helmet'
+import Hash from 'object-hash'
+
 import styles from "../pages/index.module.scss"
 
 class Teaser extends React.Component {
@@ -25,10 +28,11 @@ class Teaser extends React.Component {
     )
   }
 
-  renderTeaser(teaser, inlineStyles, indentStyles, oddOrEven) {
+  renderTeaser(teaser, helmet, colIdentifier, oddOrEven) {
     return (
-      <div className={styles.col} style={inlineStyles}>
-        <div className={oddOrEven} style={indentStyles}>
+      <div className={styles.col + ' ' + colIdentifier}>
+        {helmet}
+        <div className={oddOrEven}>
           <TeaserAnimation>
             <Link to={teaser.slug}>
               {this.renderMedia(teaser)}
@@ -39,12 +43,13 @@ class Teaser extends React.Component {
     )
   }
 
-  renderDeadTeaser(teaser, inlineStyles, indentStyles, oddOrEven) {
+  renderDeadTeaser(teaser, helmet, colIdentifier, oddOrEven) {
     teaser.featuredImage = teaser.asset // awful
 
     return (
-      <div className={styles.col} style={inlineStyles}>
-        <div className={oddOrEven} style={indentStyles}>
+      <div className={styles.col + ' ' + colIdentifier}>
+        {helmet}
+        <div className={oddOrEven}>
           <TeaserAnimation>
             {this.renderMedia(teaser)}
           </TeaserAnimation>
@@ -66,6 +71,33 @@ class Teaser extends React.Component {
       paddingRight: col.indentRight ? col.indentRight : 0
     }
 
+    const styleHash = Hash({
+      inlineStyles,
+      indentStyles
+    })
+    const colIdentifier = styles.col + '-' + styleHash
+    const helmet = <Helmet>
+      <style type="text/css">{`
+        .${styles.posts}
+        .${styles.row}
+        .${styles.col}.${colIdentifier} {
+          flex: 0.7;
+        }
+
+        @media only screen and (min-width: 667px) {
+          .${styles.col}.${colIdentifier} {
+            flex: ${inlineStyles.flex};
+            margin-top: ${inlineStyles.marginTop};
+          }
+
+          .${styles.col}.${colIdentifier} > div {
+            padding-left: ${indentStyles.paddingLeft};
+            padding-right: ${indentStyles.paddingRight};
+          }
+        }
+      `}</style>
+    </Helmet>
+
     let oddOrEven = ''
 
     if (isOdd !== undefined) {
@@ -73,10 +105,10 @@ class Teaser extends React.Component {
     }
 
     if (col.__typename === 'ContentfulDeadCategoryTeaser') {
-      return this.renderDeadTeaser(col, inlineStyles, indentStyles, oddOrEven)
+      return this.renderDeadTeaser(col, helmet, colIdentifier, oddOrEven)
     }
 
-    return this.renderTeaser(col.teaser, inlineStyles, indentStyles, oddOrEven)
+    return this.renderTeaser(col.teaser, helmet, colIdentifier, oddOrEven)
   }
 
 }
