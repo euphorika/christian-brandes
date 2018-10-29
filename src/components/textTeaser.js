@@ -14,6 +14,10 @@ export default TextTeaser
 
 export const query = graphql`
   fragment TextTeaser on ContentfulTextTeaser {
+    verticalPosition
+    width
+    indentLeft
+    indentRight
     longText {
       childMarkdownRemark {
         html

@@ -37,11 +37,15 @@ class PostCol extends React.Component {
             }
 
             @media only screen and (min-width: 667px) {
+              .${styles.posts}
+              .${styles.row}
               .${styles.col}.${colIdentifier} {
                 flex: ${inlineStyles.flex};
                 margin-top: ${inlineStyles.marginTop};
               }
 
+              .${styles.posts}
+              .${styles.row}
               .${styles.col}.${colIdentifier} > div {
                 padding-left: ${indentStyles.paddingLeft};
                 padding-right: ${indentStyles.paddingRight};
