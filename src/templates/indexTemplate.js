@@ -146,6 +146,17 @@ export const pageQuery = graphql`
               }
             }
           }
+          ... on ContentfulTextTeaser {
+            verticalPosition
+            width
+            indentLeft
+            indentRight
+            longText {
+              childMarkdownRemark {
+                html
+              }
+            }
+          }
         }
       }
    	}

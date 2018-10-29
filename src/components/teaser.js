@@ -58,6 +58,19 @@ class Teaser extends React.Component {
     )
   }
 
+  renderTextTeaser(teaser, helmet, colIdentifier, oddOrEven) {
+    return (
+      <div className={styles.col + ' ' + colIdentifier}>
+        {helmet}
+        <div className={oddOrEven}>
+          <TeaserAnimation>
+            <div className={styles.textContainer} dangerouslySetInnerHTML={{__html: teaser.longText.childMarkdownRemark.html}} />
+          </TeaserAnimation>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     const { col, isOdd } = this.props
 
@@ -85,11 +98,15 @@ class Teaser extends React.Component {
         }
 
         @media only screen and (min-width: 667px) {
+          .${styles.posts}
+          .${styles.row}
           .${styles.col}.${colIdentifier} {
             flex: ${inlineStyles.flex};
             margin-top: ${inlineStyles.marginTop};
           }
 
+          .${styles.posts}
+          .${styles.row}
           .${styles.col}.${colIdentifier} > div {
             padding-left: ${indentStyles.paddingLeft};
             padding-right: ${indentStyles.paddingRight};
@@ -106,6 +123,10 @@ class Teaser extends React.Component {
 
     if (col.__typename === 'ContentfulDeadCategoryTeaser') {
       return this.renderDeadTeaser(col, helmet, colIdentifier, oddOrEven)
+    }
+
+    if (col.__typename === 'ContentfulTextTeaser') {
+      return this.renderTextTeaser(col, helmet, colIdentifier, oddOrEven)
     }
 
     return this.renderTeaser(col.teaser, helmet, colIdentifier, oddOrEven)
