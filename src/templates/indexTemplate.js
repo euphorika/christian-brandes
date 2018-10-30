@@ -1,9 +1,11 @@
 import React from "react"
 import Helmet from "react-helmet"
 import Teaser from "../components/teaser"
-import styles from "../pages/index.module.scss"
-import { graphql } from 'gatsby'
 import Layout from "../components/layout"
+import Hash from 'object-hash'
+import { graphql } from 'gatsby'
+
+import styles from "../pages/index.module.scss"
 
 class IndexTemplate extends React.Component {
 
@@ -16,8 +18,20 @@ class IndexTemplate extends React.Component {
         marginTop: row.rowVerticalPosition ? row.rowVerticalPosition : 0
       }
 
+      const styleHash = Hash(inlineStyles)
+      const rowIdentifier = styles.row + ' ' + styleHash
+
       return (
-        <div key={keyRow} className={styles.row} style={inlineStyles}>
+        <div key={keyRow} className={styles.row + ' ' + rowIdentifier} style={inlineStyles}>
+          <Helmet>
+            <style type="text/css">{`
+              @media only screen and (min-width: 667px) {
+                .${styles.row}.${rowIdentifier} {
+                  margin-top: ${inlineStyles.marginTop};
+                }
+              }
+            `}</style>
+          </Helmet>
           {row.teasers.map((col, keyCol) => {
             isOdd = !isOdd
             col.nrCols = row.teasers.length
@@ -129,6 +143,17 @@ export const pageQuery = graphql`
               file {
                 contentType
                 url
+              }
+            }
+          }
+          ... on ContentfulTextTeaser {
+            verticalPosition
+            width
+            indentLeft
+            indentRight
+            longText {
+              childMarkdownRemark {
+                html
               }
             }
           }
