@@ -59,7 +59,7 @@ figure {
 
     position: relative;
 
-    h1, h2, p {
+    h1, h2, h3, p {
       font-size: 12px;
       margin: 0;
     }
@@ -74,12 +74,14 @@ figure {
     }
 
     .textContainer {
-      h1 {
-        font-size: 14px;
+      h1, h2, h3, p {
+        font-size: 8px;
       }
 
-      p {
-        margin: 1em 0;
+      @include breakpoint('s') {
+        h1, h2, h3, p {
+          font-size: 12px;
+        }
       }
 
       a {
