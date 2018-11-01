@@ -3,6 +3,22 @@ import Img from "gatsby-image"
 
 class Figure extends React.Component {
 
+  _renderTitle(title) {
+    if (!title) {
+      return
+    }
+
+    return <h2>{title}</h2>
+  }
+
+  _renderLocation(location, date) {
+    if (!location || !date) {
+      return
+    }
+
+    return <p>{location},&nbsp;{date.toLocaleString('en-us', { month: 'long' })}&nbsp;{date.getFullYear()}</p>
+  }
+
   render() {
 
     const { teaser } = this.props
@@ -12,8 +28,8 @@ class Figure extends React.Component {
       <figure>
         <Img sizes={teaser.featuredImage.sizes} alt={teaser.featuredImage.title} />
         <figcaption>
-          <h2>{teaser.title}</h2>
-          <p>{teaser.location},&nbsp;{date.toLocaleString('en-us', { month: 'long' })}&nbsp;{date.getFullYear()}</p>
+          {this._renderTitle(teaser.title)}
+          {this._renderLocation(teaser.location, date)}
         </figcaption>
       </figure>
     )

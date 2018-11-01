@@ -123,9 +123,6 @@ export const pageQuery = graphql`
             }
           }
           ... on ContentfulDeadCategoryTeaser {
-            title
-            location
-            date
             width
             verticalPosition
             indentLeft
