@@ -36,11 +36,8 @@ figure {
 
   .row {
 
-    @include breakpoint('s') {
-      display: flex;
-      padding: $rowPadding / 2 0;
-    }
-
+    display: flex;
+    padding: $rowPadding / 2 0;
     justify-content: space-between;
 
     @include breakpoint('m') {
@@ -116,29 +113,6 @@ figure {
         padding-right: $spaceBetween;
       }
 
-      & > div {
-        width: 65%;
-
-        &.even {
-          float: right;
-        }
-
-        &.odd {
-          float: left;
-        }
-
-        @include breakpoint('s') {
-          width: auto;
-          &.even {
-            float: none;
-          }
-
-          &.odd {
-            float: none;
-          }
-        }
-      }
-
       &:after {
         content: "";
         display: table;
@@ -151,11 +125,9 @@ figure {
       justify-content: flex-end;
 
       .col {
-        @include breakpoint('s') {
-          @for $i from 2 through $maxCols {
-            &:nth-last-child(#{$i}) {
-              padding-top: ($i - 1) * $stepMargin;
-            }
+        @for $i from 2 through $maxCols {
+          &:nth-last-child(#{$i}) {
+            padding-top: ($i - 1) * $stepMargin;
           }
         }
       }
@@ -165,11 +137,9 @@ figure {
       justify-content: flex-start;
 
       .col {
-        @include breakpoint('s') {
-          @for $i from 2 through $maxCols {
-            &:nth-child(#{$i}) {
-              padding-top: ($i - 1) * $stepMargin;
-            }
+        @for $i from 2 through $maxCols {
+          &:nth-child(#{$i}) {
+            padding-top: ($i - 1) * $stepMargin;
           }
         }
       }
