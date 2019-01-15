@@ -119,10 +119,15 @@ class Teaser extends React.Component {
         .${styles.row}
         .${styles.col}.${colIdentifier} {
           flex: ${inlineStyles.flex};
-          margin-top: ${inlineStyles.marginTop};
         }
 
         @media only screen and (min-width: 667px) {
+          .${styles.posts}
+          .${styles.row}
+          .${styles.col}.${colIdentifier} {
+            margin-top: ${inlineStyles.marginTop};
+          }
+
           .${styles.posts}
           .${styles.row}
           .${styles.col}.${colIdentifier} > div {
