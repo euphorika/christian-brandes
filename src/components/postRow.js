@@ -18,10 +18,8 @@ export default ( { row, isOdd = {} } ) => {
 
   const helmet = <Helmet>
     <style type="text/css">{`
-      @media only screen and (min-width: 667px) {
-        .${styles.row}.${rowIdentifier} {
-          margin-top: ${inlineStyles.marginTop};
-        }
+      .${styles.row}.${rowIdentifier} {
+        margin-top: ${inlineStyles.marginTop};
       }
     `}</style>
   </Helmet>
