@@ -12,8 +12,16 @@ class Figure extends React.Component {
   }
 
   _renderLocation(location, date) {
-    if (!location || !date) {
+    if (!location && !date) {
       return
+    }
+
+    if (!location) {
+      return <p>{date.toLocaleString('en-us', { month: 'long' })}&nbsp;{date.getFullYear()}</p>
+    }
+
+    if (!date) {
+      return <p>{location}</p>
     }
 
     return <p>{location},&nbsp;{date.toLocaleString('en-us', { month: 'long' })}&nbsp;{date.getFullYear()}</p>
@@ -22,7 +30,7 @@ class Figure extends React.Component {
   render() {
 
     const { teaser } = this.props
-    const date = new Date(teaser.date)
+    const date = teaser.date && new Date(teaser.date)
 
     return (
       <figure>
