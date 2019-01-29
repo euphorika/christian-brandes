@@ -100,10 +100,11 @@ figure {
 
     .col {
       padding: 0 $spaceBetween / 5;
-      padding-top: 40px;
+      padding-top: 20px;
       flex: 1;
 
       @include breakpoint('m') {
+        padding-top: 40px;
         padding-left: $spaceBetween * 0.7;
         padding-right: $spaceBetween * 0.7;
       }
