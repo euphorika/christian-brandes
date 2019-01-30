@@ -14,6 +14,7 @@ export default ( { row, isOdd = {} } ) => {
   }
 
   const styleHash = Hash(inlineStyles)
+  const stepIdentifier = row.flat ? '' : ' ' + styles.steps
   const rowIdentifier = styles.row + ' ' + styleHash
 
   const helmet = <Helmet>
@@ -28,7 +29,7 @@ export default ( { row, isOdd = {} } ) => {
 
     case 'ContentfulPostRow':
       return (
-        <div className={styles.row + ' ' + rowIdentifier}>
+        <div className={styles.row + stepIdentifier + ' ' + rowIdentifier}>
           {helmet}
           {row.postAsset.map((col, keyCol) => {
             isOdd.value = !isOdd.value

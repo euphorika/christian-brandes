@@ -37,7 +37,7 @@ figure {
   .row {
 
     display: flex;
-    padding: $rowPadding / 2 0;
+    padding: $rowPadding / 4 0;
     justify-content: space-between;
 
     @include breakpoint('m') {
@@ -99,11 +99,12 @@ figure {
 
 
     .col {
-      padding: 0 $spaceBetween / 3;
-      padding-top: 40px;
+      padding: 0 $spaceBetween / 5;
+      padding-top: 20px;
       flex: 1;
 
       @include breakpoint('m') {
+        padding-top: 40px;
         padding-left: $spaceBetween * 0.7;
         padding-right: $spaceBetween * 0.7;
       }
@@ -121,25 +122,35 @@ figure {
     }
 
 
-    &:nth-child(odd) {
-      justify-content: flex-end;
+    &.steps {
+      &:nth-child(odd) {
+        justify-content: flex-end;
 
-      .col {
-        @for $i from 2 through $maxCols {
-          &:nth-last-child(#{$i}) {
-            padding-top: ($i - 1) * $stepMargin;
+        .col {
+          @for $i from 2 through $maxCols {
+            &:nth-last-child(#{$i}) {
+              padding-top: ($i - 1) * ($stepMargin / 2);
+
+              @include breakpoint('m') {
+                padding-top: ($i - 1) * $stepMargin;
+              }
+            }
           }
         }
       }
-    }
 
-    &:nth-child(even) {
-      justify-content: flex-start;
+      &:nth-child(even) {
+        justify-content: flex-start;
 
-      .col {
-        @for $i from 2 through $maxCols {
-          &:nth-child(#{$i}) {
-            padding-top: ($i - 1) * $stepMargin;
+        .col {
+          @for $i from 2 through $maxCols {
+            &:nth-child(#{$i}) {
+              padding-top: ($i - 1) * ($stepMargin / 2);
+
+              @include breakpoint('m') {
+                padding-top: ($i - 1) * $stepMargin;
+              }
+            }
           }
         }
       }

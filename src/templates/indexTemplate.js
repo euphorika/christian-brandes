@@ -22,7 +22,7 @@ class IndexTemplate extends React.Component {
       const rowIdentifier = styles.row + ' ' + styleHash
 
       return (
-        <div key={keyRow} className={styles.row + ' ' + rowIdentifier} style={inlineStyles}>
+        <div key={keyRow} className={styles.row + ' ' + styles.steps + ' ' + rowIdentifier} style={inlineStyles}>
           <Helmet>
             <style type="text/css">{`
               @media only screen and (min-width: 667px) {
