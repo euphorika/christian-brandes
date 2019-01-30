@@ -122,32 +122,34 @@ figure {
     }
 
 
-    &:nth-child(odd) {
-      justify-content: flex-end;
+    &.steps {
+      &:nth-child(odd) {
+        justify-content: flex-end;
 
-      .col {
-        @for $i from 2 through $maxCols {
-          &:nth-last-child(#{$i}) {
-            padding-top: ($i - 1) * ($stepMargin / 2);
+        .col {
+          @for $i from 2 through $maxCols {
+            &:nth-last-child(#{$i}) {
+              padding-top: ($i - 1) * ($stepMargin / 2);
 
-            @include breakpoint('m') {
-              padding-top: ($i - 1) * $stepMargin;
+              @include breakpoint('m') {
+                padding-top: ($i - 1) * $stepMargin;
+              }
             }
           }
         }
       }
-    }
 
-    &:nth-child(even) {
-      justify-content: flex-start;
+      &:nth-child(even) {
+        justify-content: flex-start;
 
-      .col {
-        @for $i from 2 through $maxCols {
-          &:nth-child(#{$i}) {
-            padding-top: ($i - 1) * ($stepMargin / 2);
+        .col {
+          @for $i from 2 through $maxCols {
+            &:nth-child(#{$i}) {
+              padding-top: ($i - 1) * ($stepMargin / 2);
 
-            @include breakpoint('m') {
-              padding-top: ($i - 1) * $stepMargin;
+              @include breakpoint('m') {
+                padding-top: ($i - 1) * $stepMargin;
+              }
             }
           }
         }

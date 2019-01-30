@@ -73,6 +73,7 @@ export const pageQuery = graphql`
       postRow {
         __typename
         ... on ContentfulPostRow {
+          flat
           postAsset {
             __typename
             ... on ContentfulPostAsset {
