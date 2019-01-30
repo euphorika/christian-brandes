@@ -82,6 +82,9 @@ export const pageQuery = graphql`
             ... on ContentfulPostVideo {
               ...PostVideoAsset
             }
+            ... on ContentfulPostVimeoVideo {
+              ...PostVimeoVideo
+            }
           }
         }
         ... on ContentfulPostAsset {
@@ -89,6 +92,9 @@ export const pageQuery = graphql`
         }
         ... on ContentfulPostVideo {
           ...PostVideoAsset
+        }
+        ... on ContentfulPostVimeoVideo {
+          ...PostVimeoVideo
         }
         ... on ContentfulTextTeaser {
           ...TextTeaser

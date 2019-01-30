@@ -1,6 +1,7 @@
 import React from "react"
 import PostAsset from "../components/postAsset"
 import PostVideoAsset from "../components/postVideoAsset"
+import PostVimeoVideo from "../components/postVimeoVideo"
 import TextTeaser from '../components/textTeaser'
 import Helmet from 'react-helmet'
 import Hash from 'object-hash'
@@ -36,6 +37,8 @@ export default ( { row, isOdd = {} } ) => {
 
             if (col.__typename === 'ContentfulPostAsset') {
               return <PostAsset key={keyCol} post={col} odd={isOdd.value} nrCols={row.postAsset.length} />
+            } else if (col.__typename === 'ContentfulPostVimeoVideo') {
+              return <PostVimeoVideo key={keyCol} post={col} odd={isOdd.value} nrCols={row.postAsset.ength} />
             } else { // 'ContentfulPostVideo'
               return <PostVideoAsset key={keyCol} post={col} odd={isOdd.value} nrCols={row.postAsset.length} />
             }
@@ -58,6 +61,15 @@ export default ( { row, isOdd = {} } ) => {
         <div className={styles.row + ' ' + rowIdentifier}>
           {helmet}
           <PostVideoAsset post={row} odd={isOdd.value} nrCols={1} />
+        </div>
+      )
+
+    case 'ContentfulPostVimeoVideo':
+      isOdd.value = !isOdd.value
+      return (
+        <div className={styles.row + ' ' + rowIdentifier}>
+          {helmet}
+          <PostVimeoVideo post={row} odd={isOdd.value} nrCols={1} />
         </div>
       )
 
