@@ -53,7 +53,7 @@ class IndexTemplate extends React.Component {
 
     return (
       <Layout>
-        <Helmet defaultTitle={`Christian Brandes`} titleTemplate={`%s | Christian Brandes`}>
+        <Helmet>
           <meta name="description" content={contentfulCategory.metaDescription} />
         </Helmet>
         <div className={styles.posts + ' ' + styles.sticky}>
