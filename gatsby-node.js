@@ -41,13 +41,17 @@ exports.createPages = ({ graphql, actions }) => {
         })
 
         result.data.allContentfulPost.edges.forEach(({ node }) => {
-          createPage({
-            path: node.slug,
-            component: path.resolve(postTemplatePath),
-            context: {
-              slug: node.slug
-            }
-          })
+
+          if (node.slug) {
+
+            createPage({
+              path: node.slug,
+              component: path.resolve(postTemplatePath),
+              context: {
+                slug: node.slug
+              }
+            })
+          }
         })
 
       })
