@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import IconClose from "./icon-close"
 import styles from "./lightbox.module.scss"
 
@@ -21,12 +22,14 @@ class Lightbox extends React.Component {
       <div style={toggleVisibility} className={styles.lightboxContainer}>
         <div className={styles.lightboxInner}>
           <div className={styles.iconClose}>
-            <IconClose />
+            <Link to="/">
+              <IconClose />
+            </Link>
           </div>
           <div className={styles.lightboxChildrenContainer}>
             {this.props.children}
           </div>
-          </div>
+        </div>
       </div>
     )
   }
