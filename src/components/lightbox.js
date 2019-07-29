@@ -8,10 +8,9 @@ class Lightbox extends React.Component {
   constructor(props) {
     super(props)
 
-    console.log(props)
-
     this.state = {
-      visible: this.props.visible
+      visible: this.props.visible,
+      navigateBack: props.location.state && props.location.state.fromPage ? props.location.state.fromPage : "/",
     }
   }
 
@@ -24,7 +23,7 @@ class Lightbox extends React.Component {
       <div style={toggleVisibility} className={styles.lightboxContainer}>
         <div className={styles.lightboxInner}>
           <div className={styles.iconClose}>
-            <Link to="/">
+            <Link to={this.state.navigateBack}>
               <IconClose />
             </Link>
           </div>

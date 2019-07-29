@@ -27,20 +27,20 @@ export default ({ children }) => (
         </Helmet>
         <header id="header" className={styles.header}>
           <div className={styles.logoContainer}>
+            <Link className={styles.logo} to="/">
+              <Logo />
+            </Link>
+          </div>
+          <div className={styles.navigationContainer}>
             <Location>
               {({ location }) => (
-                <Link className={styles.logo} to="/" state={{ fromPage: location.href }}>
-                  <Logo />
+                <Link to="/about" state={{ fromPage: location.pathname }}>
+                  <nav role="navigation" className={styles.navigation}>
+                    <IconNavigation />
+                  </nav>
                 </Link>
               )}
             </Location>
-          </div>
-          <div className={styles.navigationContainer}>
-            <Link to="/about">
-              <nav role="navigation" className={styles.navigation}>
-                <IconNavigation />
-              </nav>
-            </Link>
           </div>
         </header>
         <main id="main" className={styles.content}>
