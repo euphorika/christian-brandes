@@ -1,8 +1,11 @@
 import React from "react"
 import { StaticQuery, Link, graphql } from "gatsby"
+import { Location } from "@reach/router"
 import Helmet from "react-helmet"
+
 import Logo from "../components/logo"
 import IconNavigation from "../components/iconNavigation"
+
 import styles from "./layout.module.scss"
 
 export default ({ children }) => (
@@ -24,9 +27,13 @@ export default ({ children }) => (
         </Helmet>
         <header id="header" className={styles.header}>
           <div className={styles.logoContainer}>
-            <Link className={styles.logo} to="/">
-              <Logo />
-            </Link>
+            <Location>
+              {({ location }) => (
+                <Link className={styles.logo} to="/" state={{ fromPage: location.href }}>
+                  <Logo />
+                </Link>
+              )}
+            </Location>
           </div>
           <div className={styles.navigationContainer}>
             <Link to="/about">
