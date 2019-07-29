@@ -5,13 +5,13 @@ import styles from "./about.module.scss"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
-export default ({ data }) => (
+export default ({ location, data }) => (
   <Layout>
     <Helmet>
       <title>{data.contentfulPage.title}</title>
       <meta name="description" content={data.contentfulPage.metaDescription} />
     </Helmet>
-    <Lightbox visible={true}>
+    <Lightbox visible={true} location={location}>
       <div className={styles.about}>
         <h1>{data.contentfulSettings.name}</h1>
         <h2>Visual Storytelling</h2>
