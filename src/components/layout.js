@@ -51,7 +51,11 @@ export default ({ children }) => (
             &copy; Christian Brandes
           </div>
           <nav role="navigation" className={styles.secondaryNavigation}>
-            <Link to="/impress-data-privacy">Impressum &amp; Datenschutz</Link>
+            <Location>
+              {({ location }) => (
+                <Link to="/impress-data-privacy" state={{ fromPage: location.pathname }}>Impressum &amp; Datenschutz</Link>
+              )}
+            </Location>
           </nav>
         </footer>
       </div>

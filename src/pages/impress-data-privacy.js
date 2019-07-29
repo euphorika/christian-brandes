@@ -4,13 +4,13 @@ import Lightbox from "../components/lightbox"
 import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 
-export default ({ data }) => (
+export default ({ location, data }) => (
   <Layout>
     <Helmet>
       <title>{data.contentfulPage.title}</title>
       <meta name="description" content={data.contentfulPage.metaDescription} />
     </Helmet>
-    <Lightbox visible={true}>
+    <Lightbox visible={true} location={location}>
       <div>
         <h2>{data.contentfulSettings.name}</h2>
         <div>Office:</div>
