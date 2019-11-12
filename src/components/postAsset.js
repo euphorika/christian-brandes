@@ -8,6 +8,10 @@ class PostAsset extends React.Component {
   render() {
     const { post, odd, nrCols } = this.props
 
+    if (!post.asset) {
+      return null
+    }
+
     return (
       <PostCol post={post} odd={odd} nrCols={nrCols}>
         <Img sizes={post.asset.sizes} alt={post.asset.title} />
